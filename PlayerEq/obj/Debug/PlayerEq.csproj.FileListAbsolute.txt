@@ -1,0 +1,10 @@
+E:\Programy\Visual Studio\Projects\PlayerEq\PlayerEq\bin\Debug\PlayerEq.exe.config
+E:\Programy\Visual Studio\Projects\PlayerEq\PlayerEq\bin\Debug\PlayerEq.exe
+E:\Programy\Visual Studio\Projects\PlayerEq\PlayerEq\bin\Debug\PlayerEq.pdb
+E:\Programy\Visual Studio\Projects\PlayerEq\PlayerEq\obj\Debug\PlayerEq.csprojResolveAssemblyReference.cache
+E:\Programy\Visual Studio\Projects\PlayerEq\PlayerEq\obj\Debug\PlayerEq.Form1.resources
+E:\Programy\Visual Studio\Projects\PlayerEq\PlayerEq\obj\Debug\PlayerEq.Form2.resources
+E:\Programy\Visual Studio\Projects\PlayerEq\PlayerEq\obj\Debug\PlayerEq.Properties.Resources.resources
+E:\Programy\Visual Studio\Projects\PlayerEq\PlayerEq\obj\Debug\PlayerEq.csproj.GenerateResource.Cache
+E:\Programy\Visual Studio\Projects\PlayerEq\PlayerEq\obj\Debug\PlayerEq.exe
+E:\Programy\Visual Studio\Projects\PlayerEq\PlayerEq\obj\Debug\PlayerEq.pdb
