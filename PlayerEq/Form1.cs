@@ -29,14 +29,16 @@ namespace PlayerEq
         }
 
         private void characterChoice(object sender, EventArgs e)
-        {
-            nameBox.Text = charactersList[comboBox1.SelectedIndex].Name;
-            levelBox.Text = charactersList[comboBox1.SelectedIndex].Level.ToString();
-            strengthBox.Text = charactersList[comboBox1.SelectedIndex].Strength.ToString();
-            defenceBox.Text = charactersList[comboBox1.SelectedIndex].Defence.ToString();
-            magicBox.Text = charactersList[comboBox1.SelectedIndex].Magic.ToString();
-            capacityBox.Text = charactersList[comboBox1.SelectedIndex].Capacity.ToString();
-            descriptionBox.Text = charactersList[comboBox1.SelectedIndex].Description;
+        {   //wypelnienie textBoxow wartosciami z listy postaci
+            //index w ComboBoxie jest rowny indexowi na liscie
+            nameBox.Text = charactersList[characterBox.SelectedIndex].Name;
+            levelBox.Text = charactersList[characterBox.SelectedIndex].Level.ToString();
+            strengthBox.Text = charactersList[characterBox.SelectedIndex].Strength.ToString();
+            defenceBox.Text = charactersList[characterBox.SelectedIndex].Defence.ToString();
+            magicBox.Text = charactersList[characterBox.SelectedIndex].Magic.ToString();
+            capacityBoxMax.Text = charactersList[characterBox.SelectedIndex].Capacity.ToString();
+            classBox.Text = form2.chrClass;
+            descriptionBox.Text = charactersList[characterBox.SelectedIndex].Description;
         }
 
 

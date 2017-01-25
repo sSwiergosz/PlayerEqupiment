@@ -17,8 +17,8 @@ namespace PlayerEq
 
         public Character() { }
 
-        public Character(int id, string name, int level, int strength, int defence, int magic, string description,
-            double capacity, string ClassOption) : base(id, description, strength, defence, magic, capacity)
+        public Character(int id, string name, int level, int strength, int defence, int magic,
+            double capacity, string ClassOption, string description) : base(id, description, strength, defence, magic, capacity)
         {
             this.Name = name;
             this.Level = level;
