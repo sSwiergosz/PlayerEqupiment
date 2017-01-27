@@ -14,7 +14,6 @@ namespace PlayerEq
     public partial class Form2 : Form
     {
         private readonly Form1 frm1;
-        public string chrClass;
 
         public Form2()
         {
@@ -49,25 +48,18 @@ namespace PlayerEq
                 }
                 catch (IOException) { }
             }
-            textBoxName.Text = read[1];
-            textBoxLevel.Text = read[2];
-            textBoxStrength.Text = read[3];
-            textBoxDefence.Text = read[4];
-            textBoxMagic.Text = read[5];
-            textBoxCapacity.Text = read[6];
-            textBoxClass.Text = read[7];
-            textBoxDescription.Text = read[8];
+
 
             //tworzenie obiektu klasy Character
-            var newCharacter = new Character(1, textBoxName.Text, int.Parse(textBoxLevel.Text),
-                int.Parse(textBoxStrength.Text), int.Parse(textBoxDefence.Text), int.Parse(textBoxMagic.Text),
-                int.Parse(textBoxCapacity.Text), textBoxClass.Text, textBoxDescription.Text);
+            var newCharacter = new Character(1, read[1], int.Parse(read[2]),
+                int.Parse(read[3]), int.Parse(read[4]), int.Parse(read[5]),
+                int.Parse(read[6]), read[7], read[8]);
 
-            frm1.charactersList.Add(newCharacter); //dodawanie stworzonej postaci do listy wszystkich postaci
+            //dodawanie stworzonej postaci do listy wszystkich postaci
+            frm1.charactersList.Add(newCharacter);
 
             //dodawanie postaci do comboboxa w Form1
             frm1.characterBox.Items.Add(newCharacter.Name + ", level: " + newCharacter.Level + ", klasa: " + read[7]);
-            chrClass = read[7];
 
             //Domyslne wybranie z comboboxa ostatniego wczytanego obiektu
             frm1.characterBox.SelectedIndex = frm1.characterBox.Items.Count - 1;
@@ -75,15 +67,6 @@ namespace PlayerEq
 
         private void eCharacterButton_Click(object sender, EventArgs e)
         {
-            textBoxName.Text = eTextBoxName.Text;
-            textBoxLevel.Text = eTextBoxLevel.Text;
-            textBoxStrength.Text = eTextBoxStrength.Text;
-            textBoxDefence.Text = eTextBoxDefence.Text;
-            textBoxMagic.Text = eTextBoxMagic.Text;
-            textBoxCapacity.Text = eTextBoxCapacity.Text;
-            textBoxClass.Text = eTextBoxClass.Text;
-            textBoxDescription.Text = eTextBoxDescription.Text;
-
             int i = frm1.characterBox.SelectedIndex;
 
             frm1.charactersList[i].Name = eTextBoxName.Text;
@@ -93,9 +76,10 @@ namespace PlayerEq
             frm1.charactersList[i].Magic = int.Parse(eTextBoxMagic.Text);
             frm1.charactersList[i].Capacity = int.Parse(eTextBoxCapacity.Text);
             frm1.charactersList[i].Description = eTextBoxDescription.Text;
+            frm1.charactersList[i].ClassOption = eTextBoxClass.Text;
 
-
-            frm1.characterBox.Items.Add(frm1.charactersList[i].Name + ", level: " + frm1.charactersList[i].Level + ", klasa: " + textBoxClass.Text);
+            //aktualizacja wyswietlania postaci w comboBoxie
+            frm1.characterBox.Items.Add(frm1.charactersList[i].Name + ", level: " + frm1.charactersList[i].Level + ", klasa: " + frm1.charactersList[i].ClassOption);
             frm1.characterBox.Items.RemoveAt(i);
         }
 
@@ -110,6 +94,20 @@ namespace PlayerEq
 
             string name = saveFileDialog1.FileName; //nazwa pliku do zapisu
             File.WriteAllText(name, frm1.charactersList[i].Name + Environment.NewLine + frm1.charactersList[i].Level);
+        }
+
+        private void dCharacterButton_Click(object sender, EventArgs e)
+        {
+            int i = frm1.characterBox.SelectedIndex;
+
+            frm1.charactersList.RemoveAt(i); //usuwanie postaci z listy
+            frm1.characterBox.Items.RemoveAt(i); //usuwanie postaci z comboBoxa
+            frm1.clearTextBoxes();
+
+            if (frm1.charactersList.Count == 0)
+            {
+                frm1.characterBox.Text = "";
+            }
         }
     }
 }

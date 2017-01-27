@@ -17,6 +17,8 @@ namespace PlayerEq
 
         public Character() { }
 
+        public string ClassOption { get; set; }
+
         public Character(int id, string name, int level, int strength, int defence, int magic,
             double capacity, string ClassOption, string description) : base(id, description, strength, defence, magic, capacity)
         {
@@ -24,7 +26,6 @@ namespace PlayerEq
             this.Level = level;
             this.ClassOption = ClassOption;
         }
-        private string ClassOption { get; set; }
     }
 
 }

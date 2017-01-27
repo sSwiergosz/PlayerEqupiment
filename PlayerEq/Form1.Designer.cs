@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.capacityBoxMax = new System.Windows.Forms.TextBox();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
@@ -57,7 +58,6 @@
             this.nameBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.capacityBoxMax = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -139,6 +139,14 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // capacityBoxMax
+            // 
+            this.capacityBoxMax.Location = new System.Drawing.Point(126, 175);
+            this.capacityBoxMax.Name = "capacityBoxMax";
+            this.capacityBoxMax.ReadOnly = true;
+            this.capacityBoxMax.Size = new System.Drawing.Size(43, 20);
+            this.capacityBoxMax.TabIndex = 31;
             // 
             // comboBox7
             // 
@@ -334,14 +342,6 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // capacityBoxMax
-            // 
-            this.capacityBoxMax.Location = new System.Drawing.Point(126, 175);
-            this.capacityBoxMax.Name = "capacityBoxMax";
-            this.capacityBoxMax.ReadOnly = true;
-            this.capacityBoxMax.Size = new System.Drawing.Size(43, 20);
-            this.capacityBoxMax.TabIndex = 31;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,7 +366,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.TextBox strengthBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox levelBox;
@@ -388,6 +387,7 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox capacityBoxMax;
+        public System.Windows.Forms.TextBox nameBox;
     }
 }
 
