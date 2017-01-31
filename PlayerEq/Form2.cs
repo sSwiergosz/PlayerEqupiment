@@ -81,6 +81,7 @@ namespace PlayerEq
             //aktualizacja wyswietlania postaci w comboBoxie
             frm1.characterBox.Items.Add(frm1.charactersList[i].Name + ", level: " + frm1.charactersList[i].Level + ", klasa: " + frm1.charactersList[i].ClassOption);
             frm1.characterBox.Items.RemoveAt(i);
+            frm1.characterBox.SelectedIndex = frm1.characterBox.Items.Count - 1;
         }
 
         private void saveButton_Click(object sender, EventArgs e)

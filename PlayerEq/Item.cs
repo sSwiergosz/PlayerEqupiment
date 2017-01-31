@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace PlayerEq
 {
 
-    internal class Item
+    public class Item
     {
         public int ID { get; set; }
 
@@ -27,8 +27,8 @@ namespace PlayerEq
 
         public Item() { }
 
-        public Item(int id, string name, string type, string description, string requirements, double bonus,
-            string properties, double weight)
+        public Item(int id, string name, string type, string requirements, double bonus,
+            string properties, double weight, string description)
         {
             this.ID = id;
             this.Name = name;

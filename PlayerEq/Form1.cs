@@ -13,7 +13,11 @@ namespace PlayerEq
     public partial class Form1 : Form
     {
         public List<Character> charactersList = new List<Character>(); //tworzenie listy wszystkich postaci
+
+        public List<Item> itemsList = new List<Item>(); //tworzenie listy wszystkich itemow
+
         private Form2 form2;
+        private Form3 form3;
 
         public Form1()
         {
@@ -52,6 +56,21 @@ namespace PlayerEq
             capacityBoxMax.Text = "";
             classBox.Text = "";
             descriptionBox.Text = "";
+        }
+
+        private void itemsWindowOpen_Click(object sender, EventArgs e)
+        {
+            if (form3 == null)
+                form3 = new Form3(this);
+            form3.Show();
+        }
+
+        //Dodawanie wybranych itemow listy w oknie postaci
+        //TODO - dodawanie itemow do postaci (udzwig, moc)
+        private void addItem_Click(object sender, EventArgs e)
+        {
+            int i = comboBox1.SelectedIndex;
+            usingItems.Items.Add(itemsList[i].Name);
         }
     }
 }

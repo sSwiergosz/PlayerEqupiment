@@ -34,13 +34,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.usingItems = new System.Windows.Forms.ListBox();
+            this.itemsWindowOpen = new System.Windows.Forms.Button();
             this.capacityBoxMax = new System.Windows.Forms.TextBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.descriptionBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.classBox = new System.Windows.Forms.TextBox();
@@ -58,8 +54,11 @@
             this.nameBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.addItem = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -106,13 +105,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.usingItems);
+            this.tabPage1.Controls.Add(this.itemsWindowOpen);
             this.tabPage1.Controls.Add(this.capacityBoxMax);
-            this.tabPage1.Controls.Add(this.comboBox7);
-            this.tabPage1.Controls.Add(this.comboBox6);
-            this.tabPage1.Controls.Add(this.comboBox5);
-            this.tabPage1.Controls.Add(this.comboBox4);
-            this.tabPage1.Controls.Add(this.comboBox3);
-            this.tabPage1.Controls.Add(this.comboBox2);
             this.tabPage1.Controls.Add(this.descriptionBox);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.classBox);
@@ -140,6 +135,24 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // usingItems
+            // 
+            this.usingItems.FormattingEnabled = true;
+            this.usingItems.Location = new System.Drawing.Point(292, 96);
+            this.usingItems.Name = "usingItems";
+            this.usingItems.Size = new System.Drawing.Size(336, 95);
+            this.usingItems.TabIndex = 33;
+            // 
+            // itemsWindowOpen
+            // 
+            this.itemsWindowOpen.Location = new System.Drawing.Point(566, 6);
+            this.itemsWindowOpen.Name = "itemsWindowOpen";
+            this.itemsWindowOpen.Size = new System.Drawing.Size(75, 34);
+            this.itemsWindowOpen.TabIndex = 32;
+            this.itemsWindowOpen.Text = "Items window";
+            this.itemsWindowOpen.UseVisualStyleBackColor = true;
+            this.itemsWindowOpen.Click += new System.EventHandler(this.itemsWindowOpen_Click);
+            // 
             // capacityBoxMax
             // 
             this.capacityBoxMax.Location = new System.Drawing.Point(126, 175);
@@ -147,54 +160,6 @@
             this.capacityBoxMax.ReadOnly = true;
             this.capacityBoxMax.Size = new System.Drawing.Size(43, 20);
             this.capacityBoxMax.TabIndex = 31;
-            // 
-            // comboBox7
-            // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(406, 222);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(121, 21);
-            this.comboBox7.TabIndex = 30;
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(406, 170);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(121, 21);
-            this.comboBox6.TabIndex = 29;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(533, 122);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 21);
-            this.comboBox5.TabIndex = 28;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(406, 122);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 27;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(279, 122);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 26;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(406, 74);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 25;
             // 
             // descriptionBox
             // 
@@ -334,6 +299,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.addItem);
+            this.tabPage2.Controls.Add(this.comboBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -341,6 +308,26 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(70, 72);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(321, 21);
+            this.comboBox1.TabIndex = 0;
+            // 
+            // addItem
+            // 
+            this.addItem.Location = new System.Drawing.Point(70, 121);
+            this.addItem.Name = "addItem";
+            this.addItem.Size = new System.Drawing.Size(75, 23);
+            this.addItem.TabIndex = 1;
+            this.addItem.Text = "Add item";
+            this.addItem.UseVisualStyleBackColor = true;
+            this.addItem.Click += new System.EventHandler(this.addItem_Click);
             // 
             // Form1
             // 
@@ -353,6 +340,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -380,14 +368,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox defenceBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox capacityBoxMax;
         public System.Windows.Forms.TextBox nameBox;
+        private System.Windows.Forms.Button itemsWindowOpen;
+        public System.Windows.Forms.ListBox usingItems;
+        public System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button addItem;
     }
 }
 
