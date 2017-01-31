@@ -54,8 +54,8 @@
             this.nameBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.addItem = new System.Windows.Forms.Button();
+            this.addingItemBox = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -300,7 +300,7 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.addItem);
-            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.addingItemBox);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -308,16 +308,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(70, 72);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(321, 21);
-            this.comboBox1.TabIndex = 0;
             // 
             // addItem
             // 
@@ -328,6 +318,16 @@
             this.addItem.Text = "Add item";
             this.addItem.UseVisualStyleBackColor = true;
             this.addItem.Click += new System.EventHandler(this.addItem_Click);
+            // 
+            // addingItemBox
+            // 
+            this.addingItemBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.addingItemBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.addingItemBox.FormattingEnabled = true;
+            this.addingItemBox.Location = new System.Drawing.Point(70, 72);
+            this.addingItemBox.Name = "addingItemBox";
+            this.addingItemBox.Size = new System.Drawing.Size(321, 21);
+            this.addingItemBox.TabIndex = 0;
             // 
             // Form1
             // 
@@ -362,7 +362,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox classBox;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox capacityBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox magicBox;
         private System.Windows.Forms.Label label6;
@@ -372,8 +371,9 @@
         public System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.Button itemsWindowOpen;
         public System.Windows.Forms.ListBox usingItems;
-        public System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.ComboBox addingItemBox;
         private System.Windows.Forms.Button addItem;
+        public System.Windows.Forms.TextBox capacityBox;
     }
 }
 

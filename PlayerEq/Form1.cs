@@ -66,11 +66,21 @@ namespace PlayerEq
         }
 
         //Dodawanie wybranych itemow listy w oknie postaci
-        //TODO - dodawanie itemow do postaci (udzwig, moc)
         private void addItem_Click(object sender, EventArgs e)
         {
-            int i = comboBox1.SelectedIndex;
-            usingItems.Items.Add(itemsList[i].Name);
+            int i = addingItemBox.SelectedIndex;
+
+            //zabezpieczenie przed przekroczeniem udzwigu postaci
+            if (itemsList[i].Weight < int.Parse(capacityBoxMax.Text))
+            {
+                capacityBox.Text = itemsList[i].Weight.ToString();
+                usingItems.Items.Add(itemsList[i].Name);
+            }
+            else
+            {
+                MessageBox.Show("Capacity overrun!");
+                return;
+            }
         }
     }
 }

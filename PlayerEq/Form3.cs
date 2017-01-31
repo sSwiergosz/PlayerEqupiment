@@ -52,17 +52,50 @@ namespace PlayerEq
 
             //tworzenie obiektu klasy Item
             id = id + 1;
-            var newItem = new Item(id, readItem[0], readItem[1], readItem[2], Convert.ToDouble(readItem[3]),
-                                    readItem[4], Convert.ToDouble(readItem[5]), readItem[6]);
+            var newItem = new Item(id, readItem[0], readItem[1], readItem[2], int.Parse(readItem[3]),
+                                    readItem[4], int.Parse(readItem[5]), readItem[6]);
 
             //dodawanie obiektu do listy wszystkich itemow
             frm1.itemsList.Add(newItem);
 
             //wyswietlanie itemow w comboboxie
-            frm1.comboBox1.Items.Add(newItem.Name);
+            frm1.addingItemBox.Items.Add(newItem.Name);
+            selectedItemComboBox.Items.Add(newItem.Name);
+
+            frm1.addingItemBox.SelectedIndex = frm1.addingItemBox.Items.Count - 1;
 
             //TODO - zapisywanie do pliku, usuwanie i edycja itemu
         }
 
+        //edycja itemu
+        private void editItemButton_Click(object sender, EventArgs e)
+        {
+            int i = selectedItemComboBox.SelectedIndex;
+
+            //edytowany item jest zdejmowany z postaci
+            for(int j=0; j < frm1.usingItems.Items.Count; j++)
+            {
+                if(frm1.usingItems.Items[j].ToString() == frm1.itemsList[i].Name)
+                {
+                    frm1.usingItems.Items.RemoveAt(j);
+                    frm1.capacityBox.Text = (frm1.itemsList[i].Weight - int.Parse(frm1.capacityBox.Text)).ToString();
+                }
+            }
+
+            frm1.itemsList[i].Name = eItemNameBox.Text;
+            frm1.itemsList[i].Type = eItemTypeBox.Text;
+            frm1.itemsList[i].Requirements = eItemReqBox.Text;
+            frm1.itemsList[i].Bonus = int.Parse(eItemBonusBox.Text);
+            frm1.itemsList[i].Properties = eItemPropBox.Text;
+            frm1.itemsList[i].Weight = int.Parse(eItemWeightBox.Text);
+            frm1.itemsList[i].Description = eItemDescBox.Text;
+
+            selectedItemComboBox.Items.Add(frm1.itemsList[i].Name);
+            selectedItemComboBox.Items.RemoveAt(i);
+
+            frm1.addingItemBox.Items.Add(frm1.itemsList[i].Name);
+            frm1.addingItemBox.Items.RemoveAt(i);
+
+        }
     }
 }

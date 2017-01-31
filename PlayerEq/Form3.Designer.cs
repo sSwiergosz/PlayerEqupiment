@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.eItemNameBox = new System.Windows.Forms.TextBox();
+            this.eItemTypeBox = new System.Windows.Forms.TextBox();
+            this.eItemReqBox = new System.Windows.Forms.TextBox();
+            this.eItemBonusBox = new System.Windows.Forms.TextBox();
+            this.eItemPropBox = new System.Windows.Forms.TextBox();
+            this.eItemWeightBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,56 +44,53 @@
             this.readItemButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.label10 = new System.Windows.Forms.Label();
+            this.eItemDescBox = new System.Windows.Forms.RichTextBox();
+            this.editItemButton = new System.Windows.Forms.Button();
+            this.selectedItemComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // eItemNameBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(100, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.eItemNameBox.Location = new System.Drawing.Point(100, 49);
+            this.eItemNameBox.Name = "eItemNameBox";
+            this.eItemNameBox.Size = new System.Drawing.Size(100, 20);
+            this.eItemNameBox.TabIndex = 0;
             // 
-            // textBox2
+            // eItemTypeBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(100, 75);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
+            this.eItemTypeBox.Location = new System.Drawing.Point(100, 75);
+            this.eItemTypeBox.Name = "eItemTypeBox";
+            this.eItemTypeBox.Size = new System.Drawing.Size(100, 20);
+            this.eItemTypeBox.TabIndex = 1;
             // 
-            // textBox3
+            // eItemReqBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(100, 101);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 2;
+            this.eItemReqBox.Location = new System.Drawing.Point(100, 101);
+            this.eItemReqBox.Name = "eItemReqBox";
+            this.eItemReqBox.Size = new System.Drawing.Size(100, 20);
+            this.eItemReqBox.TabIndex = 2;
             // 
-            // textBox4
+            // eItemBonusBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(100, 127);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 3;
+            this.eItemBonusBox.Location = new System.Drawing.Point(100, 127);
+            this.eItemBonusBox.Name = "eItemBonusBox";
+            this.eItemBonusBox.Size = new System.Drawing.Size(100, 20);
+            this.eItemBonusBox.TabIndex = 3;
             // 
-            // textBox5
+            // eItemPropBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(100, 153);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 4;
+            this.eItemPropBox.Location = new System.Drawing.Point(100, 153);
+            this.eItemPropBox.Name = "eItemPropBox";
+            this.eItemPropBox.Size = new System.Drawing.Size(100, 20);
+            this.eItemPropBox.TabIndex = 4;
             // 
-            // textBox6
+            // eItemWeightBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(100, 179);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 5;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(100, 205);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 6;
+            this.eItemWeightBox.Location = new System.Drawing.Point(100, 179);
+            this.eItemWeightBox.Name = "eItemWeightBox";
+            this.eItemWeightBox.Size = new System.Drawing.Size(100, 20);
+            this.eItemWeightBox.TabIndex = 5;
             // 
             // label1
             // 
@@ -174,11 +170,50 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(22, 25);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(39, 13);
+            this.label10.TabIndex = 52;
+            this.label10.Text = "Editing";
+            // 
+            // eItemDescBox
+            // 
+            this.eItemDescBox.Location = new System.Drawing.Point(25, 224);
+            this.eItemDescBox.Name = "eItemDescBox";
+            this.eItemDescBox.Size = new System.Drawing.Size(175, 80);
+            this.eItemDescBox.TabIndex = 53;
+            this.eItemDescBox.Text = "";
+            // 
+            // editItemButton
+            // 
+            this.editItemButton.Location = new System.Drawing.Point(25, 333);
+            this.editItemButton.Name = "editItemButton";
+            this.editItemButton.Size = new System.Drawing.Size(75, 23);
+            this.editItemButton.TabIndex = 54;
+            this.editItemButton.Text = "Edit item";
+            this.editItemButton.UseVisualStyleBackColor = true;
+            this.editItemButton.Click += new System.EventHandler(this.editItemButton_Click);
+            // 
+            // selectedItemComboBox
+            // 
+            this.selectedItemComboBox.FormattingEnabled = true;
+            this.selectedItemComboBox.Location = new System.Drawing.Point(341, 104);
+            this.selectedItemComboBox.Name = "selectedItemComboBox";
+            this.selectedItemComboBox.Size = new System.Drawing.Size(260, 21);
+            this.selectedItemComboBox.TabIndex = 55;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 371);
+            this.Controls.Add(this.selectedItemComboBox);
+            this.Controls.Add(this.editItemButton);
+            this.Controls.Add(this.eItemDescBox);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.readItemButton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -187,13 +222,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.eItemWeightBox);
+            this.Controls.Add(this.eItemPropBox);
+            this.Controls.Add(this.eItemBonusBox);
+            this.Controls.Add(this.eItemReqBox);
+            this.Controls.Add(this.eItemTypeBox);
+            this.Controls.Add(this.eItemNameBox);
             this.Name = "Form3";
             this.Text = "Form3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form3_FormClosing);
@@ -204,13 +238,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox eItemNameBox;
+        private System.Windows.Forms.TextBox eItemTypeBox;
+        private System.Windows.Forms.TextBox eItemReqBox;
+        private System.Windows.Forms.TextBox eItemBonusBox;
+        private System.Windows.Forms.TextBox eItemPropBox;
+        private System.Windows.Forms.TextBox eItemWeightBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -221,5 +254,9 @@
         private System.Windows.Forms.Button readItemButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.RichTextBox eItemDescBox;
+        private System.Windows.Forms.Button editItemButton;
+        public System.Windows.Forms.ComboBox selectedItemComboBox;
     }
 }
