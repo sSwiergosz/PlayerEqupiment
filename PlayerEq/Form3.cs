@@ -79,6 +79,7 @@ namespace PlayerEq
                 {
                     frm1.usingItems.Items.RemoveAt(j);
                     frm1.capacityBox.Text = (frm1.itemsList[i].Weight - int.Parse(frm1.capacityBox.Text)).ToString();
+                    break;
                 }
             }
 
@@ -96,6 +97,41 @@ namespace PlayerEq
             frm1.addingItemBox.Items.Add(frm1.itemsList[i].Name);
             frm1.addingItemBox.Items.RemoveAt(i);
 
+        }
+
+        private void saveItemButton_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+        }
+
+        private void saveFileDialog1_FileOk_1(object sender, CancelEventArgs e)
+        {
+            int i = selectedItemComboBox.SelectedIndex;
+
+            string name = saveFileDialog1.FileName; //nazwa pliku do zapisu
+            File.WriteAllText(name, frm1.itemsList[i].Name + Environment.NewLine + frm1.itemsList[i].Requirements);
+        }
+
+        private void dItemButton_Click(object sender, EventArgs e)
+        {
+            int i = selectedItemComboBox.SelectedIndex;
+
+            for (int j = 0; j < frm1.usingItems.Items.Count; j++)
+            {
+                if (frm1.usingItems.Items[j].ToString() == frm1.itemsList[i].Name)
+                {
+                    frm1.usingItems.Items.RemoveAt(j);
+                    frm1.capacityBox.Text = (int.Parse(frm1.capacityBox.Text) - frm1.itemsList[i].Weight).ToString();
+                    break;
+                }
+            }
+
+            frm1.itemsList.RemoveAt(i);
+            selectedItemComboBox.Items.RemoveAt(i);
+            selectedItemComboBox.Text = " ";
+
+            frm1.addingItemBox.Items.RemoveAt(i);
+            frm1.addingItemBox.Text = " ";
         }
     }
 }

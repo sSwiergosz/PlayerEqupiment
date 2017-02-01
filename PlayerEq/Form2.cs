@@ -52,8 +52,11 @@ namespace PlayerEq
 
             //tworzenie obiektu klasy Character
             var newCharacter = new Character(1, read[1], int.Parse(read[2]),
-                int.Parse(read[3]), int.Parse(read[4]), int.Parse(read[5]),
-                int.Parse(read[6]), read[7], read[8]);
+                Convert.ToDouble(read[3]), Convert.ToDouble(read[4]), int.Parse(read[5]),
+                Convert.ToDouble(read[6]), read[7], read[8]);
+
+            double lvl = int.Parse(read[2]) * 1.05; //zwiekszanie wartosci bazowych - 5% co lvl
+            newCharacter.GiveBonus(lvl);
 
             //dodawanie stworzonej postaci do listy wszystkich postaci
             frm1.charactersList.Add(newCharacter);

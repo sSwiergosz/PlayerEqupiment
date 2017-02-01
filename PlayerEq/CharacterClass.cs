@@ -13,9 +13,9 @@ namespace PlayerEq
 
         public string Description { get; set; }
 
-        public int Strength { get; set; }
+        public double Strength { get; set; }
 
-        public int Defence { get; set; }
+        public double Defence { get; set; }
 
         public int Magic { get; set; }
 
@@ -23,7 +23,7 @@ namespace PlayerEq
 
         public CharacterClass() { }
 
-        public CharacterClass(int id, string description, int strength, int defence, int magic, double capacity)
+        public CharacterClass(int id, string description, double strength, double defence, int magic, double capacity)
         {
             this.ID = id;
             this.Description = description;
@@ -31,6 +31,14 @@ namespace PlayerEq
             this.Defence = defence;
             this.Magic = magic;
             this.Capacity = capacity;
+        }
+
+        //metoda zwiekszajaca sile, obrone i udzwig w zaleznosci od poziomu
+        public virtual void GiveBonus(double lvl)
+        {
+            Strength += (lvl);
+            Defence += (lvl);
+            Capacity += (lvl);
         }
     }
 

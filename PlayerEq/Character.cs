@@ -19,12 +19,17 @@ namespace PlayerEq
 
         public string ClassOption { get; set; }
 
-        public Character(int id, string name, int level, int strength, int defence, int magic,
+        public Character(int id, string name, int level, double strength, double defence, int magic,
             double capacity, string ClassOption, string description) : base(id, description, strength, defence, magic, capacity)
         {
             this.Name = name;
             this.Level = level;
             this.ClassOption = ClassOption;
+        }
+
+        public override void GiveBonus(double lvl)
+        {
+            base.GiveBonus(lvl);
         }
     }
 

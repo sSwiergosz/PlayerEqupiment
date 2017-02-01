@@ -48,6 +48,8 @@
             this.eItemDescBox = new System.Windows.Forms.RichTextBox();
             this.editItemButton = new System.Windows.Forms.Button();
             this.selectedItemComboBox = new System.Windows.Forms.ComboBox();
+            this.saveItemButton = new System.Windows.Forms.Button();
+            this.dItemButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // eItemNameBox
@@ -170,6 +172,10 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk_1);
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -205,11 +211,33 @@
             this.selectedItemComboBox.Size = new System.Drawing.Size(260, 21);
             this.selectedItemComboBox.TabIndex = 55;
             // 
+            // saveItemButton
+            // 
+            this.saveItemButton.Location = new System.Drawing.Point(430, 25);
+            this.saveItemButton.Name = "saveItemButton";
+            this.saveItemButton.Size = new System.Drawing.Size(75, 23);
+            this.saveItemButton.TabIndex = 56;
+            this.saveItemButton.Text = "Save to file";
+            this.saveItemButton.UseVisualStyleBackColor = true;
+            this.saveItemButton.Click += new System.EventHandler(this.saveItemButton_Click);
+            // 
+            // dItemButton
+            // 
+            this.dItemButton.Location = new System.Drawing.Point(106, 333);
+            this.dItemButton.Name = "dItemButton";
+            this.dItemButton.Size = new System.Drawing.Size(75, 23);
+            this.dItemButton.TabIndex = 57;
+            this.dItemButton.Text = "Delete item";
+            this.dItemButton.UseVisualStyleBackColor = true;
+            this.dItemButton.Click += new System.EventHandler(this.dItemButton_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 371);
+            this.Controls.Add(this.dItemButton);
+            this.Controls.Add(this.saveItemButton);
             this.Controls.Add(this.selectedItemComboBox);
             this.Controls.Add(this.editItemButton);
             this.Controls.Add(this.eItemDescBox);
@@ -258,5 +286,7 @@
         private System.Windows.Forms.RichTextBox eItemDescBox;
         private System.Windows.Forms.Button editItemButton;
         public System.Windows.Forms.ComboBox selectedItemComboBox;
+        private System.Windows.Forms.Button saveItemButton;
+        private System.Windows.Forms.Button dItemButton;
     }
 }

@@ -42,6 +42,7 @@ namespace PlayerEq
             defenceBox.Text = charactersList[i].Defence.ToString();
             magicBox.Text = charactersList[i].Magic.ToString();
             capacityBoxMax.Text = charactersList[i].Capacity.ToString();
+            capacityBox.Text = "0";
             classBox.Text = charactersList[i].ClassOption;
             descriptionBox.Text = charactersList[i].Description;
         }
@@ -70,17 +71,27 @@ namespace PlayerEq
         {
             int i = addingItemBox.SelectedIndex;
 
-            //zabezpieczenie przed przekroczeniem udzwigu postaci
-            if (itemsList[i].Weight < int.Parse(capacityBoxMax.Text))
+            if(classBox.Text == itemsList[i].Requirements)
             {
-                capacityBox.Text = itemsList[i].Weight.ToString();
-                usingItems.Items.Add(itemsList[i].Name);
+                int temp = (int.Parse(capacityBox.Text) + itemsList[i].Weight); //zmodyfikowana waga
+
+                //zabezpieczenie przed przekroczeniem udzwigu postaci
+                if (temp < Convert.ToDouble(capacityBoxMax.Text))
+                {
+                    capacityBox.Text = temp.ToString();
+                    usingItems.Items.Add(itemsList[i].Name);
+                }
+                else
+                {
+                    MessageBox.Show("Capacity overrun!");
+                    return;
+                }
             }
             else
             {
-                MessageBox.Show("Capacity overrun!");
+                MessageBox.Show("Item not avaible for your character class");
                 return;
-            }
+            }           
         }
     }
 }
