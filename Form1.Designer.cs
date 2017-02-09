@@ -83,7 +83,7 @@
             this.charactersWindowButton.TabIndex = 5;
             this.charactersWindowButton.Text = "Characters window";
             this.charactersWindowButton.UseVisualStyleBackColor = true;
-            this.charactersWindowButton.Click += new System.EventHandler(this.characterWindowOpen);
+            this.charactersWindowButton.Click += new System.EventHandler(this.CharacterWindowOpen);
             // 
             // characterBox
             // 
@@ -92,7 +92,7 @@
             this.characterBox.Name = "characterBox";
             this.characterBox.Size = new System.Drawing.Size(386, 21);
             this.characterBox.TabIndex = 7;
-            this.characterBox.SelectedIndexChanged += new System.EventHandler(this.characterChoice);
+            this.characterBox.SelectedIndexChanged += new System.EventHandler(this.CharacterChoice);
             // 
             // label1
             // 
@@ -381,7 +381,7 @@
             this.addingItemBox.Name = "addingItemBox";
             this.addingItemBox.Size = new System.Drawing.Size(321, 21);
             this.addingItemBox.TabIndex = 0;
-            this.addingItemBox.SelectedIndexChanged += new System.EventHandler(this.selectItem);
+            this.addingItemBox.SelectedIndexChanged += new System.EventHandler(this.SelectItem);
             // 
             // saveFileDialog1
             // 

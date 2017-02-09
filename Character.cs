@@ -20,11 +20,11 @@ namespace PlayerEq
         public string ClassOption { get; set; }
 
         public Character(string name, int level, double strength, double defence, int magic,
-            double capacity, string ClassOption, string description) : base(description, strength, defence, magic, capacity)
+            double capacity, string classOption, string description) : base(description, strength, defence, magic, capacity)
         {
             this.Name = name;
             this.Level = level;
-            this.ClassOption = ClassOption;
+            this.ClassOption = classOption;
         }
 
         public override void GiveBonus(double lvl)

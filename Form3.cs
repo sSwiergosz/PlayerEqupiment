@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
 namespace PlayerEq
 {
     public partial class Form3 : Form
     {
-        private readonly Form1 frm1;
-        int id = 0;
+        private readonly Form1 _frm1;
 
         public Form3()
         {
@@ -24,7 +17,7 @@ namespace PlayerEq
         public Form3(Form1 frm1)
         {
             InitializeComponent();
-            this.frm1 = frm1;
+            _frm1 = frm1;
 
             itemReqBox.Items.Add("Mag");
             itemReqBox.Items.Add("Warrior");
@@ -33,6 +26,7 @@ namespace PlayerEq
             itemTypeBox.Items.Add("Sword");
             itemTypeBox.Items.Add("Wand");
             itemTypeBox.Items.Add("Armor");
+            itemTypeBox.Items.Add("Helmet");
         }
 
         private void Form3_FormClosing(object sender, FormClosingEventArgs e)
@@ -42,65 +36,65 @@ namespace PlayerEq
             e.Cancel = true;
         }
 
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e) { }
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+        }
 
         private void readItemButton_Click(object sender, EventArgs e)
         {
             var readItem = new string[6]; //do tej tablicy wczytujemy wartosci z pliku
-            var result = this.openFileDialog1.ShowDialog();
+            var result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
-                var file = this.openFileDialog1.FileName;
+                var file = openFileDialog1.FileName;
                 try
                 {
                     readItem = File.ReadAllLines(file); //wczytywanie z pliku linia po linii
                 }
-                catch (IOException) { }
+                catch (IOException)
+                {
+                }
             }
 
             //tworzenie obiektu klasy Item
-            id = id + 1;
             var newItem = new Item(readItem[0], readItem[1], readItem[2], int.Parse(readItem[3]),
-                                    readItem[4], int.Parse(readItem[5]), readItem[6]);
+                readItem[4], int.Parse(readItem[5]), readItem[6]);
 
             //dodawanie obiektu do listy wszystkich itemow
-            frm1.itemsList.Add(newItem);
+            _frm1.ItemsList.Add(newItem);
 
             //wyswietlanie itemow w comboboxie
-            frm1.addingItemBox.Items.Add(newItem.Name);
+            _frm1.addingItemBox.Items.Add(newItem.Name);
             selectedItemComboBox.Items.Add(newItem.Name);
         }
 
         //edycja itemu
         private void editItemButton_Click(object sender, EventArgs e)
         {
-            int i = selectedItemComboBox.SelectedIndex;
+            var i = selectedItemComboBox.SelectedIndex;
 
             //edytowany item jest zdejmowany z postaci
-            for(int j=0; j < frm1.usingItems.Items.Count; j++)
-            {
-                if(frm1.usingItems.Items[j].ToString() == frm1.itemsList[i].Name)
+            for (var j = 0; j < _frm1.usingItems.Items.Count; j++)
+                if (_frm1.usingItems.Items[j].ToString() == _frm1.ItemsList[i].Name)
                 {
-                    frm1.usingItems.Items.RemoveAt(j);
-                    frm1.capacityBox.Text = (frm1.itemsList[i].Weight - int.Parse(frm1.capacityBox.Text)).ToString();
+                    _frm1.usingItems.Items.RemoveAt(j);
+                    _frm1.capacityBox.Text = (_frm1.ItemsList[i].Weight - int.Parse(_frm1.capacityBox.Text)).ToString();
                     break;
                 }
-            }
 
-            frm1.itemsList[i].Name = eItemNameBox.Text;
-            frm1.itemsList[i].Type = itemTypeBox.Text;
-            frm1.itemsList[i].Requirements = itemReqBox.Text;
-            frm1.itemsList[i].Bonus = int.Parse(eItemBonusBox.Text);
-            frm1.itemsList[i].Properties = eItemPropBox.Text;
-            frm1.itemsList[i].Weight = int.Parse(eItemWeightBox.Text);
-            frm1.itemsList[i].Description = eItemDescBox.Text;
+            _frm1.ItemsList[i].Name = eItemNameBox.Text;
+            _frm1.ItemsList[i].Type = itemTypeBox.Text;
+            _frm1.ItemsList[i].Requirements = itemReqBox.Text;
+            _frm1.ItemsList[i].Bonus = int.Parse(eItemBonusBox.Text);
+            _frm1.ItemsList[i].Properties = eItemPropBox.Text;
+            _frm1.ItemsList[i].Weight = int.Parse(eItemWeightBox.Text);
+            _frm1.ItemsList[i].Description = eItemDescBox.Text;
 
-            selectedItemComboBox.Items.Add(frm1.itemsList[i].Name);
+            selectedItemComboBox.Items.Add(_frm1.ItemsList[i].Name);
             selectedItemComboBox.Items.RemoveAt(i);
 
-            frm1.addingItemBox.Items.Add(frm1.itemsList[i].Name);
-            frm1.addingItemBox.Items.RemoveAt(i);
-
+            _frm1.addingItemBox.Items.Add(_frm1.ItemsList[i].Name);
+            _frm1.addingItemBox.Items.RemoveAt(i);
         }
 
         private void saveItemButton_Click(object sender, EventArgs e)
@@ -110,61 +104,69 @@ namespace PlayerEq
 
         private void saveFileDialog1_FileOk_1(object sender, CancelEventArgs e)
         {
-            int i = selectedItemComboBox.SelectedIndex;
+            var i = selectedItemComboBox.SelectedIndex;
 
-            string name = saveFileDialog1.FileName; //nazwa pliku do zapisu
-            File.WriteAllText(name, frm1.itemsList[i].Name + Environment.NewLine + frm1.itemsList[i].Requirements);
+            var name = saveFileDialog1.FileName; //nazwa pliku do zapisu
+            File.WriteAllText(name, _frm1.ItemsList[i].Name + Environment.NewLine + _frm1.ItemsList[i].Requirements);
         }
 
         private void dItemButton_Click(object sender, EventArgs e)
         {
-            int i = selectedItemComboBox.SelectedIndex;
+            var i = selectedItemComboBox.SelectedIndex;
 
-            for (int j = 0; j < frm1.usingItems.Items.Count; j++)
-            {
-                if (frm1.usingItems.Items[j].ToString() == frm1.itemsList[i].Name)
+            for (var j = 0; j < _frm1.usingItems.Items.Count; j++)
+                if (_frm1.usingItems.Items[j].ToString() == _frm1.ItemsList[i].Name)
                 {
-                    frm1.usingItems.Items.RemoveAt(j);
-                    frm1.capacityBox.Text = (int.Parse(frm1.capacityBox.Text) - frm1.itemsList[i].Weight).ToString();
+                    _frm1.usingItems.Items.RemoveAt(j);
+                    _frm1.capacityBox.Text = (int.Parse(_frm1.capacityBox.Text) - _frm1.ItemsList[i].Weight).ToString();
                     break;
                 }
-            }
 
-            if (frm1.itemsList[i].Type == "Sword")
+            if (_frm1.ItemsList[i].Type == "Sword")
             {
-                double temp = frm1.tempBonusStrength - frm1.itemsList[i].Bonus;
-                frm1.strengthBox.Text = (Convert.ToDouble(frm1.strengthBox.Text.Split(' ')[0]) - frm1.itemsList[i].Bonus).ToString();
-                frm1.tempBonusStrength = frm1.tempBonusStrength - frm1.itemsList[i].Bonus;
+                _frm1.strengthBox.Text =
+                    (Convert.ToDouble(_frm1.strengthBox.Text.Split(' ')[0]) - _frm1.ItemsList[i].Bonus).ToString();
+                _frm1.TempBonusStrength = _frm1.TempBonusStrength - _frm1.ItemsList[i].Bonus;
+                _frm1.HasSword = false;
             }
-            else if (frm1.itemsList[i].Type == "Wand")
+            else if (_frm1.ItemsList[i].Type == "Wand")
             {
-                double temp = frm1.tempBonusMagic - frm1.itemsList[i].Bonus;
-                frm1.magicBox.Text = (Convert.ToDouble(frm1.magicBox.Text.Split(' ')[0]) - frm1.itemsList[i].Bonus).ToString();
-                frm1.tempBonusMagic = frm1.tempBonusMagic - frm1.itemsList[i].Bonus;
+                _frm1.magicBox.Text =
+                    (Convert.ToDouble(_frm1.magicBox.Text.Split(' ')[0]) - _frm1.ItemsList[i].Bonus).ToString();
+                _frm1.TempBonusMagic = _frm1.TempBonusMagic - _frm1.ItemsList[i].Bonus;
+                _frm1.HasWand = false;
             }
             else
             {
-                double temp = frm1.tempBonusDefence - frm1.itemsList[i].Bonus;
-                frm1.defenceBox.Text = (Convert.ToDouble(frm1.defenceBox.Text.Split(' ')[0]) - frm1.itemsList[i].Bonus).ToString();
-                frm1.tempBonusDefence = frm1.tempBonusDefence - frm1.itemsList[i].Bonus;
+                _frm1.defenceBox.Text =
+                    (Convert.ToDouble(_frm1.defenceBox.Text.Split(' ')[0]) - _frm1.ItemsList[i].Bonus).ToString();
+                _frm1.TempBonusDefence = _frm1.TempBonusDefence - _frm1.ItemsList[i].Bonus;
+
+                if (_frm1.ItemsList[i].Type == "Armor")
+                {
+                    _frm1.HasArmor = false;
+                }
+                else
+                {
+                    _frm1.HasHelmet = false;
+                }
             }
 
-            frm1.itemsList.RemoveAt(i);
+            _frm1.ItemsList.RemoveAt(i);
             selectedItemComboBox.Items.RemoveAt(i);
             selectedItemComboBox.Text = " ";
 
-            frm1.addingItemBox.Items.RemoveAt(i);
-            frm1.addingItemBox.Text = " ";
-
+            _frm1.addingItemBox.Items.RemoveAt(i);
+            _frm1.addingItemBox.Text = " ";
         }
 
         private void createItemButton_Click(object sender, EventArgs e)
         {
-            var newItem = new Item(eItemNameBox.Text, itemTypeBox.Text, itemReqBox.Text, int.Parse(eItemBonusBox.Text), 
+            var newItem = new Item(eItemNameBox.Text, itemTypeBox.Text, itemReqBox.Text, int.Parse(eItemBonusBox.Text),
                 eItemPropBox.Text, int.Parse(eItemWeightBox.Text), eItemDescBox.Text);
 
-            frm1.itemsList.Add(newItem);
-            frm1.addingItemBox.Items.Add(newItem.Name);
+            _frm1.ItemsList.Add(newItem);
+            _frm1.addingItemBox.Items.Add(newItem.Name);
             selectedItemComboBox.Items.Add(newItem.Name);
         }
     }
