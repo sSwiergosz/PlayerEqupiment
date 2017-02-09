@@ -21,6 +21,7 @@ namespace PlayerEq
         public List<string> tempString2 = new List<string>();
         public List<string> read = new List<string>();
 
+        //zmienne pomocnicze do obliczania atrybutow postci po otrzymaniu bonusu
         public double tempBonusStrength = 0;
         public double tempBonusMagic = 0;
         public double tempBonusDefence = 0;
@@ -45,6 +46,7 @@ namespace PlayerEq
                 form2 = new Form2(this);
             form2.Show();
 
+            //inicjalizacja domyslnymi wartosciami
             form2.cCharClassBox.Items.Add("Warrior");
             form2.cCharClassBox.Items.Add("Mag");
             form2.cCharClassBox.Items.Add("Thief");
@@ -54,9 +56,9 @@ namespace PlayerEq
             form2.cCharCapacityBox.Text = "5";
         }
 
-        private void characterChoice(object sender, EventArgs e)
-        {   //wypelnienie textBoxow wartosciami z listy postaci
-            //index w ComboBoxie jest rowny indexowi na liscie
+        //funkcja wypelniajaca textboxy wczytanymi wartosciami z listy
+        private void fillTextboxes()
+        {
             int i = characterBox.SelectedIndex;
 
             nameBox.Text = charactersList[i].Name;
@@ -68,6 +70,15 @@ namespace PlayerEq
             capacityBox.Text = "0";
             classBox.Text = charactersList[i].ClassOption;
             descriptionBox.Text = charactersList[i].Description;
+        }
+
+        //Funkcja sluzaca wypelnieniu textboxow po wyborze postaci
+        private void characterChoice(object sender, EventArgs e)
+        {
+            //index w ComboBoxie jest rowny indexowi na liscie
+            int i = characterBox.SelectedIndex;
+
+            fillTextboxes();
 
             form2.cCharNameBox.Text = charactersList[i].Name;
             form2.cCharLevelBox.Text = charactersList[i].Level.ToString();
@@ -121,7 +132,12 @@ namespace PlayerEq
                 this.chart1.Series["After"].Points.AddXY("Strength", Convert.ToDouble(magicBox.Text) + itemsList[i].Bonus);
             }
 
-            //this.chart1.Series["Before"].Points.AddXY("Magic", Convert.ToDouble(magicBox.Text));
+            MessageBox.Show("Name: " + itemsList[i].Name + Environment.NewLine +
+                "Type: " + itemsList[i].Type + Environment.NewLine + 
+                "Requirement: " + itemsList[i].Requirements + Environment.NewLine +
+                "Bonus: " + itemsList[i].Bonus + Environment.NewLine + 
+                "Properties: " + itemsList[i].Properties + Environment.NewLine + 
+                "Weight: " + itemsList[i].Weight);
         }
 
         //Dodawanie wybranych itemow listy w oknie postaci
@@ -132,7 +148,7 @@ namespace PlayerEq
 
             if(classBox.Text == itemsList[i].Requirements || itemsList[i].Requirements == "None")
             {
-                int temp = (int.Parse(capacityBox.Text) + itemsList[i].Weight); //zmodyfikowana waga
+                int temp = (int.Parse(capacityBox.Text) + itemsList[i].Weight); //zmodyfikowany udzwig
 
                 //zabezpieczenie przed przekroczeniem udzwigu postaci
                 if (temp < Convert.ToDouble(capacityBoxMax.Text))
@@ -157,6 +173,7 @@ namespace PlayerEq
                         defenceBox.Text = (charactersList[j].Defence + tempBonusDefence).ToString();
                     }
 
+                    //dodanie do listy zapisu wszystkich itemow obecnych na postaci
                     tempString.Add(itemsList[i].Name);
                     tempString.Add(itemsList[i].Type);
                     tempString.Add(itemsList[i].Requirements);
@@ -193,15 +210,17 @@ namespace PlayerEq
         {
             string name = saveFileDialog1.FileName; //nazwa pliku do zapisu
 
+            //dodanie do listy zapisu wartosci postaci
             tempString2.Add(nameBox.Text);
             tempString2.Add(levelBox.Text);
-            tempString2.Add(strengthBox.Text.ToString().Split(' ')[0]);
-            tempString2.Add(defenceBox.Text.ToString().Split(' ')[0]);
-            tempString2.Add(magicBox.Text.ToString().Split(' ')[0]);
+            tempString2.Add(strengthBox.Text.ToString());
+            tempString2.Add(defenceBox.Text.ToString());
+            tempString2.Add(magicBox.Text.ToString());
             tempString2.Add(capacityBoxMax.Text);
             tempString2.Add(classBox.Text);
             tempString2.Add(descriptionBox.Text);
 
+            //polaczenie postaci ze wszystkimi itemami postaci
             var allStringList = tempString2.Concat(tempString).ToList();
 
             File.WriteAllLines(name, allStringList);
@@ -231,6 +250,7 @@ namespace PlayerEq
             characterBox.Items.Add(newCharacter.Name + ", level: " + newCharacter.Level + ", klasa: " + read[7]);
             characterBox.SelectedIndex = characterBox.Items.Count - 1;
 
+            //ostatni element listy postaci
             int i = charactersList.Count - 1;
 
             nameBox.Text = charactersList[i].Name;
@@ -248,6 +268,8 @@ namespace PlayerEq
 
             string lastElement = read.Last();
 
+            //pierwsze 8 wersow zawsze bedzie nalezec do postaci
+            //te atrybuty zostaly juz wczytane, wiec mozna je pominac
             foreach (string s in read.Skip(8))
             {
                 if (counter <= 6)
