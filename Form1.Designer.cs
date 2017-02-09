@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.charactersWindowButton = new System.Windows.Forms.Button();
             this.characterBox = new System.Windows.Forms.ComboBox();
@@ -56,12 +60,14 @@
             this.nameBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.addItem = new System.Windows.Forms.Button();
             this.addingItemBox = new System.Windows.Forms.ComboBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -325,6 +331,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.chart1);
             this.tabPage2.Controls.Add(this.addItem);
             this.tabPage2.Controls.Add(this.addingItemBox);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -335,9 +342,29 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(329, 44);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Before";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "After";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(393, 280);
+            this.chart1.TabIndex = 2;
+            this.chart1.Text = "chart1";
+            // 
             // addItem
             // 
-            this.addItem.Location = new System.Drawing.Point(70, 121);
+            this.addItem.Location = new System.Drawing.Point(7, 33);
             this.addItem.Name = "addItem";
             this.addItem.Size = new System.Drawing.Size(75, 23);
             this.addItem.TabIndex = 1;
@@ -350,10 +377,11 @@
             this.addingItemBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.addingItemBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.addingItemBox.FormattingEnabled = true;
-            this.addingItemBox.Location = new System.Drawing.Point(70, 72);
+            this.addingItemBox.Location = new System.Drawing.Point(7, 6);
             this.addingItemBox.Name = "addingItemBox";
             this.addingItemBox.Size = new System.Drawing.Size(321, 21);
             this.addingItemBox.TabIndex = 0;
+            this.addingItemBox.SelectedIndexChanged += new System.EventHandler(this.selectItem);
             // 
             // saveFileDialog1
             // 
@@ -371,6 +399,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -384,7 +413,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox strengthBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox levelBox;
         private System.Windows.Forms.Label label3;
@@ -393,9 +421,7 @@
         private System.Windows.Forms.TextBox classBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox magicBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox defenceBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox capacityBoxMax;
         public System.Windows.Forms.TextBox nameBox;
@@ -407,6 +433,10 @@
         private System.Windows.Forms.Button readCharItemsButton;
         private System.Windows.Forms.Button saveCharItemsButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        public System.Windows.Forms.TextBox strengthBox;
+        public System.Windows.Forms.TextBox magicBox;
+        public System.Windows.Forms.TextBox defenceBox;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace PlayerEq
 {
@@ -20,12 +21,12 @@ namespace PlayerEq
         public List<string> tempString2 = new List<string>();
         public List<string> read = new List<string>();
 
+        public double tempBonusStrength = 0;
+        public double tempBonusMagic = 0;
+        public double tempBonusDefence = 0;
+
         private Form2 form2;
         private Form3 form3;
-
-        private double strength_before;
-        private double magic_before;
-        private double defence_before;
 
         public Form1()
         {
@@ -44,13 +45,13 @@ namespace PlayerEq
                 form2 = new Form2(this);
             form2.Show();
 
-            form2.comboBox1.Items.Add("Wojownik");
-            form2.comboBox1.Items.Add("Mag");
-            form2.comboBox1.Items.Add("Zlodziej");
-            form2.textBox2.Text = "10";
-            form2.textBox3.Text = "10";
-            form2.textBox4.Text = "5";
-            form2.textBox5.Text = "5";
+            form2.cCharClassBox.Items.Add("Warrior");
+            form2.cCharClassBox.Items.Add("Mag");
+            form2.cCharClassBox.Items.Add("Thief");
+            form2.cCharStrengthBox.Text = "10";
+            form2.cCharDefenceBox.Text = "10";
+            form2.cCharMagicBox.Text = "5";
+            form2.cCharCapacityBox.Text = "5";
         }
 
         private void characterChoice(object sender, EventArgs e)
@@ -67,6 +68,15 @@ namespace PlayerEq
             capacityBox.Text = "0";
             classBox.Text = charactersList[i].ClassOption;
             descriptionBox.Text = charactersList[i].Description;
+
+            form2.cCharNameBox.Text = charactersList[i].Name;
+            form2.cCharLevelBox.Text = charactersList[i].Level.ToString();
+            form2.cCharStrengthBox.Text = charactersList[i].Strength.ToString();
+            form2.cCharDefenceBox.Text = charactersList[i].Defence.ToString();
+            form2.cCharMagicBox.Text = charactersList[i].Magic.ToString();
+            form2.cCharCapacityBox.Text = charactersList[i].Capacity.ToString();
+            form2.cCharClassBox.Text = charactersList[i].ClassOption;
+            form2.cCharDescriptBox.Text = charactersList[i].Description;
 
             usingItems.Items.Clear();
         }
@@ -90,10 +100,35 @@ namespace PlayerEq
             form3.Show();
         }
 
+        private void selectItem(object sender, EventArgs e)
+        {
+            int i = addingItemBox.SelectedIndex;
+
+            //wyswietlanie wykresow dla 
+            if(itemsList[i].Type == "Sword")
+            {
+                this.chart1.Series["Before"].Points.AddXY("Strength", Convert.ToDouble(strengthBox.Text));
+                this.chart1.Series["After"].Points.AddXY("Strength", Convert.ToDouble(strengthBox.Text) + itemsList[i].Bonus);
+            }
+            else if(itemsList[i].Type == "Armor")
+            {
+                this.chart1.Series["Before"].Points.AddXY("Defence", Convert.ToDouble(defenceBox.Text));
+                this.chart1.Series["After"].Points.AddXY("Strength", Convert.ToDouble(defenceBox.Text) + itemsList[i].Bonus);
+            }
+            else if (itemsList[i].Type == "Wand")
+            {
+                this.chart1.Series["Before"].Points.AddXY("Magic", Convert.ToDouble(magicBox.Text));
+                this.chart1.Series["After"].Points.AddXY("Strength", Convert.ToDouble(magicBox.Text) + itemsList[i].Bonus);
+            }
+
+            //this.chart1.Series["Before"].Points.AddXY("Magic", Convert.ToDouble(magicBox.Text));
+        }
+
         //Dodawanie wybranych itemow listy w oknie postaci
         private void addItem_Click(object sender, EventArgs e)
         {
             int i = addingItemBox.SelectedIndex;
+            int j = characterBox.SelectedIndex;
 
             if(classBox.Text == itemsList[i].Requirements || itemsList[i].Requirements == "None")
             {
@@ -106,23 +141,20 @@ namespace PlayerEq
                     usingItems.Items.Add(itemsList[i].Name);
 
                     //dodawanie bonusu po zalozeniu itemu
-                    if(itemsList[i].Type == "Miecz")
+                    if(itemsList[i].Type == "Sword")
                     {
-                        strength_before = Convert.ToDouble(strengthBox.Text);
-                        strengthBox.Text = (Convert.ToDouble(strengthBox.Text) + itemsList[i].Bonus).ToString() 
-                                            + " " + "(" + strengthBox.Text + " + " + itemsList[i].Bonus + ")";
+                        tempBonusStrength += itemsList[i].Bonus;
+                        strengthBox.Text = (charactersList[j].Strength + tempBonusStrength).ToString();
                     }
-                    else if(itemsList[i].Type == "Rozdzka")
+                    else if(itemsList[i].Type == "Wand")
                     {
-                        magic_before = Convert.ToDouble(strengthBox.Text);
-                        magicBox.Text = (Convert.ToDouble(magicBox.Text) + itemsList[i].Bonus).ToString()
-                                            + " " + "(" + magicBox.Text + " + " + itemsList[i].Bonus + ")";
+                        tempBonusMagic += itemsList[i].Bonus;
+                        magicBox.Text = (Convert.ToDouble(magicBox.Text.Split(' ')[0]) + tempBonusMagic).ToString();
                     }
                     else
                     {
-                        defence_before = Convert.ToDouble(strengthBox.Text);
-                        defenceBox.Text = (Convert.ToDouble(defenceBox.Text) + itemsList[i].Bonus).ToString()
-                                            + " " + "(" + defenceBox.Text + " + " + itemsList[i].Bonus + ")";
+                        tempBonusDefence += itemsList[i].Bonus;
+                        defenceBox.Text = (charactersList[j].Defence + tempBonusDefence).ToString();
                     }
 
                     tempString.Add(itemsList[i].Name);
@@ -144,7 +176,12 @@ namespace PlayerEq
             {
                 MessageBox.Show("Item not avaible for your character class");
                 return;
-            }           
+            }
+
+            foreach (var series in chart1.Series)
+            {
+                series.Points.Clear();
+            }
         }
 
         private void saveCharItemsButton_Click(object sender, EventArgs e)
@@ -158,10 +195,10 @@ namespace PlayerEq
 
             tempString2.Add(nameBox.Text);
             tempString2.Add(levelBox.Text);
-            tempString2.Add(strength_before.ToString());
-            tempString2.Add(defence_before.ToString());
-            tempString2.Add(magic_before.ToString());
-            tempString2.Add(capacityBox.Text);
+            tempString2.Add(strengthBox.Text.ToString().Split(' ')[0]);
+            tempString2.Add(defenceBox.Text.ToString().Split(' ')[0]);
+            tempString2.Add(magicBox.Text.ToString().Split(' ')[0]);
+            tempString2.Add(capacityBoxMax.Text);
             tempString2.Add(classBox.Text);
             tempString2.Add(descriptionBox.Text);
 
@@ -192,6 +229,7 @@ namespace PlayerEq
 
             charactersList.Add(newCharacter);
             characterBox.Items.Add(newCharacter.Name + ", level: " + newCharacter.Level + ", klasa: " + read[7]);
+            characterBox.SelectedIndex = characterBox.Items.Count - 1;
 
             int i = charactersList.Count - 1;
 
@@ -207,10 +245,12 @@ namespace PlayerEq
 
             var temp = new string[7];
             int counter = 0;
-            
+
+            string lastElement = read.Last();
+
             foreach (string s in read.Skip(8))
             {
-                if (counter != 7)
+                if (counter <= 6)
                 {
                     temp[counter] = s;
                     counter++;
@@ -220,24 +260,27 @@ namespace PlayerEq
                     var newItem = new Item(temp[0], temp[1], temp[2], int.Parse(temp[3]), temp[4], int.Parse(temp[5]), temp[6]);
                     itemsList.Add(newItem);
                     int j = itemsList.Count - 1;
-                    addingItemBox.Items.Add(newItem.Name);
+                    addingItemBox.Items.Add(itemsList[itemsList.Count-1].Name);
                     form3.selectedItemComboBox.Items.Add(newItem.Name);
                     capacityBox.Text = (int.Parse(capacityBox.Text) + itemsList[j].Weight).ToString();
-                    counter = 0;
+                    usingItems.Items.Add(newItem.Name);
+                    Array.Clear(temp, 0, temp.Length);
+                    temp[0] = s;
+                    counter = 1;
+                }
+
+                if(s == lastElement)
+                {
+                    var newItem = new Item(temp[0], temp[1], temp[2], int.Parse(temp[3]), temp[4], int.Parse(temp[5]), temp[6]);
+                    itemsList.Add(newItem);
+                    int j = itemsList.Count - 1;
+                    addingItemBox.Items.Add(itemsList[itemsList.Count - 1].Name);
+                    form3.selectedItemComboBox.Items.Add(newItem.Name);
+                    capacityBox.Text = (int.Parse(capacityBox.Text) + itemsList[j].Weight).ToString();
+                    usingItems.Items.Add(newItem.Name);
                     Array.Clear(temp, 0, temp.Length);
                 }
             }
-
-
-            
-            
-
-            
-
-            
-
-
-
         }
     }
 }

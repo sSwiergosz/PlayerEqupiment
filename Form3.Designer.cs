@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.eItemNameBox = new System.Windows.Forms.TextBox();
-            this.eItemTypeBox = new System.Windows.Forms.TextBox();
-            this.eItemReqBox = new System.Windows.Forms.TextBox();
             this.eItemBonusBox = new System.Windows.Forms.TextBox();
             this.eItemPropBox = new System.Windows.Forms.TextBox();
             this.eItemWeightBox = new System.Windows.Forms.TextBox();
@@ -50,6 +48,9 @@
             this.selectedItemComboBox = new System.Windows.Forms.ComboBox();
             this.saveItemButton = new System.Windows.Forms.Button();
             this.dItemButton = new System.Windows.Forms.Button();
+            this.createItemButton = new System.Windows.Forms.Button();
+            this.itemReqBox = new System.Windows.Forms.ComboBox();
+            this.itemTypeBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // eItemNameBox
@@ -58,20 +59,6 @@
             this.eItemNameBox.Name = "eItemNameBox";
             this.eItemNameBox.Size = new System.Drawing.Size(100, 20);
             this.eItemNameBox.TabIndex = 0;
-            // 
-            // eItemTypeBox
-            // 
-            this.eItemTypeBox.Location = new System.Drawing.Point(100, 75);
-            this.eItemTypeBox.Name = "eItemTypeBox";
-            this.eItemTypeBox.Size = new System.Drawing.Size(100, 20);
-            this.eItemTypeBox.TabIndex = 1;
-            // 
-            // eItemReqBox
-            // 
-            this.eItemReqBox.Location = new System.Drawing.Point(100, 101);
-            this.eItemReqBox.Name = "eItemReqBox";
-            this.eItemReqBox.Size = new System.Drawing.Size(100, 20);
-            this.eItemReqBox.TabIndex = 2;
             // 
             // eItemBonusBox
             // 
@@ -181,9 +168,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(22, 25);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(39, 13);
+            this.label10.Size = new System.Drawing.Size(83, 13);
             this.label10.TabIndex = 52;
-            this.label10.Text = "Editing";
+            this.label10.Text = "Editing/Creating";
             // 
             // eItemDescBox
             // 
@@ -231,11 +218,40 @@
             this.dItemButton.UseVisualStyleBackColor = true;
             this.dItemButton.Click += new System.EventHandler(this.dItemButton_Click);
             // 
+            // createItemButton
+            // 
+            this.createItemButton.Location = new System.Drawing.Point(188, 333);
+            this.createItemButton.Name = "createItemButton";
+            this.createItemButton.Size = new System.Drawing.Size(75, 23);
+            this.createItemButton.TabIndex = 58;
+            this.createItemButton.Text = "Create item";
+            this.createItemButton.UseVisualStyleBackColor = true;
+            this.createItemButton.Click += new System.EventHandler(this.createItemButton_Click);
+            // 
+            // itemReqBox
+            // 
+            this.itemReqBox.FormattingEnabled = true;
+            this.itemReqBox.Location = new System.Drawing.Point(100, 101);
+            this.itemReqBox.Name = "itemReqBox";
+            this.itemReqBox.Size = new System.Drawing.Size(100, 21);
+            this.itemReqBox.TabIndex = 75;
+            // 
+            // itemTypeBox
+            // 
+            this.itemTypeBox.FormattingEnabled = true;
+            this.itemTypeBox.Location = new System.Drawing.Point(100, 75);
+            this.itemTypeBox.Name = "itemTypeBox";
+            this.itemTypeBox.Size = new System.Drawing.Size(100, 21);
+            this.itemTypeBox.TabIndex = 76;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 371);
+            this.Controls.Add(this.itemTypeBox);
+            this.Controls.Add(this.itemReqBox);
+            this.Controls.Add(this.createItemButton);
             this.Controls.Add(this.dItemButton);
             this.Controls.Add(this.saveItemButton);
             this.Controls.Add(this.selectedItemComboBox);
@@ -253,8 +269,6 @@
             this.Controls.Add(this.eItemWeightBox);
             this.Controls.Add(this.eItemPropBox);
             this.Controls.Add(this.eItemBonusBox);
-            this.Controls.Add(this.eItemReqBox);
-            this.Controls.Add(this.eItemTypeBox);
             this.Controls.Add(this.eItemNameBox);
             this.Name = "Form3";
             this.Text = "Form3";
@@ -267,8 +281,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox eItemNameBox;
-        private System.Windows.Forms.TextBox eItemTypeBox;
-        private System.Windows.Forms.TextBox eItemReqBox;
         private System.Windows.Forms.TextBox eItemBonusBox;
         private System.Windows.Forms.TextBox eItemPropBox;
         private System.Windows.Forms.TextBox eItemWeightBox;
@@ -288,5 +300,8 @@
         public System.Windows.Forms.ComboBox selectedItemComboBox;
         private System.Windows.Forms.Button saveItemButton;
         private System.Windows.Forms.Button dItemButton;
+        private System.Windows.Forms.Button createItemButton;
+        public System.Windows.Forms.ComboBox itemReqBox;
+        public System.Windows.Forms.ComboBox itemTypeBox;
     }
 }

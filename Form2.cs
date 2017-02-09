@@ -71,14 +71,14 @@ namespace PlayerEq
         {
             int i = frm1.characterBox.SelectedIndex;
 
-            frm1.charactersList[i].Name = eTextBoxName.Text;
-            frm1.charactersList[i].Level = int.Parse(eTextBoxLevel.Text);
-            frm1.charactersList[i].Strength = int.Parse(eTextBoxStrength.Text);
-            frm1.charactersList[i].Defence = int.Parse(eTextBoxDefence.Text);
-            frm1.charactersList[i].Magic = int.Parse(eTextBoxMagic.Text);
-            frm1.charactersList[i].Capacity = int.Parse(eTextBoxCapacity.Text);
-            frm1.charactersList[i].Description = eTextBoxDescription.Text;
-            frm1.charactersList[i].ClassOption = eTextBoxClass.Text;
+            frm1.charactersList[i].Name = cCharNameBox.Text;
+            frm1.charactersList[i].Level = int.Parse(cCharLevelBox.Text);
+            frm1.charactersList[i].Strength = int.Parse(cCharStrengthBox.Text);
+            frm1.charactersList[i].Defence = int.Parse(cCharDefenceBox.Text);
+            frm1.charactersList[i].Magic = int.Parse(cCharMagicBox.Text);
+            frm1.charactersList[i].Capacity = int.Parse(cCharCapacityBox.Text);
+            frm1.charactersList[i].Description = cCharDescriptBox.Text;
+            frm1.charactersList[i].ClassOption = cCharClassBox.Text;
 
             //aktualizacja wyswietlania postaci w comboBoxie
             frm1.characterBox.Items.Add(frm1.charactersList[i].Name + ", level: " + frm1.charactersList[i].Level + ", klasa: " + frm1.charactersList[i].ClassOption);
@@ -111,6 +111,21 @@ namespace PlayerEq
             {
                 frm1.characterBox.Text = "";
             }
+        }
+
+        private void createCharButton_Click(object sender, EventArgs e)
+        {
+            var newCharacter = new Character(cCharNameBox.Text, int.Parse(cCharLevelBox.Text),
+                Convert.ToDouble(cCharStrengthBox.Text), Convert.ToDouble(cCharDefenceBox.Text), 
+                int.Parse(cCharMagicBox.Text), Convert.ToDouble(cCharCapacityBox.Text), 
+                cCharClassBox.Text, cCharDescriptBox.Text);
+
+            double lvl = int.Parse(cCharLevelBox.Text) * 1.05; //zwiekszanie wartosci bazowych o 5%
+            newCharacter.GiveBonus(lvl);
+
+            frm1.charactersList.Add(newCharacter);
+            frm1.characterBox.Items.Add(newCharacter.Name + ", level: " + newCharacter.Level + ", klasa: " + 
+                newCharacter.ClassOption);
         }
     }
 }

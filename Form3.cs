@@ -25,6 +25,14 @@ namespace PlayerEq
         {
             InitializeComponent();
             this.frm1 = frm1;
+
+            itemReqBox.Items.Add("Mag");
+            itemReqBox.Items.Add("Warrior");
+            itemReqBox.Items.Add("Thief");
+
+            itemTypeBox.Items.Add("Sword");
+            itemTypeBox.Items.Add("Wand");
+            itemTypeBox.Items.Add("Armor");
         }
 
         private void Form3_FormClosing(object sender, FormClosingEventArgs e)
@@ -80,8 +88,8 @@ namespace PlayerEq
             }
 
             frm1.itemsList[i].Name = eItemNameBox.Text;
-            frm1.itemsList[i].Type = eItemTypeBox.Text;
-            frm1.itemsList[i].Requirements = eItemReqBox.Text;
+            frm1.itemsList[i].Type = itemTypeBox.Text;
+            frm1.itemsList[i].Requirements = itemReqBox.Text;
             frm1.itemsList[i].Bonus = int.Parse(eItemBonusBox.Text);
             frm1.itemsList[i].Properties = eItemPropBox.Text;
             frm1.itemsList[i].Weight = int.Parse(eItemWeightBox.Text);
@@ -122,12 +130,42 @@ namespace PlayerEq
                 }
             }
 
+            if (frm1.itemsList[i].Type == "Sword")
+            {
+                double temp = frm1.tempBonusStrength - frm1.itemsList[i].Bonus;
+                frm1.strengthBox.Text = (Convert.ToDouble(frm1.strengthBox.Text.Split(' ')[0]) - frm1.itemsList[i].Bonus).ToString();
+                frm1.tempBonusStrength = frm1.tempBonusStrength - frm1.itemsList[i].Bonus;
+            }
+            else if (frm1.itemsList[i].Type == "Wand")
+            {
+                double temp = frm1.tempBonusMagic - frm1.itemsList[i].Bonus;
+                frm1.magicBox.Text = (Convert.ToDouble(frm1.magicBox.Text.Split(' ')[0]) - frm1.itemsList[i].Bonus).ToString();
+                frm1.tempBonusMagic = frm1.tempBonusMagic - frm1.itemsList[i].Bonus;
+            }
+            else
+            {
+                double temp = frm1.tempBonusDefence - frm1.itemsList[i].Bonus;
+                frm1.defenceBox.Text = (Convert.ToDouble(frm1.defenceBox.Text.Split(' ')[0]) - frm1.itemsList[i].Bonus).ToString();
+                frm1.tempBonusDefence = frm1.tempBonusDefence - frm1.itemsList[i].Bonus;
+            }
+
             frm1.itemsList.RemoveAt(i);
             selectedItemComboBox.Items.RemoveAt(i);
             selectedItemComboBox.Text = " ";
 
             frm1.addingItemBox.Items.RemoveAt(i);
             frm1.addingItemBox.Text = " ";
+
+        }
+
+        private void createItemButton_Click(object sender, EventArgs e)
+        {
+            var newItem = new Item(eItemNameBox.Text, itemTypeBox.Text, itemReqBox.Text, int.Parse(eItemBonusBox.Text), 
+                eItemPropBox.Text, int.Parse(eItemWeightBox.Text), eItemDescBox.Text);
+
+            frm1.itemsList.Add(newItem);
+            frm1.addingItemBox.Items.Add(newItem.Name);
+            selectedItemComboBox.Items.Add(newItem.Name);
         }
     }
 }
