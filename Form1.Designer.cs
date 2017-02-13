@@ -38,12 +38,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.descriptionBox = new System.Windows.Forms.RichTextBox();
             this.readCharItemsButton = new System.Windows.Forms.Button();
             this.saveCharItemsButton = new System.Windows.Forms.Button();
             this.usingItems = new System.Windows.Forms.ListBox();
             this.itemsWindowOpen = new System.Windows.Forms.Button();
             this.capacityBoxMax = new System.Windows.Forms.TextBox();
-            this.descriptionBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.classBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -77,10 +78,10 @@
             // 
             // charactersWindowButton
             // 
-            this.charactersWindowButton.Location = new System.Drawing.Point(647, 6);
+            this.charactersWindowButton.Location = new System.Drawing.Point(234, 191);
             this.charactersWindowButton.Name = "charactersWindowButton";
-            this.charactersWindowButton.Size = new System.Drawing.Size(75, 34);
-            this.charactersWindowButton.TabIndex = 5;
+            this.charactersWindowButton.Size = new System.Drawing.Size(162, 52);
+            this.charactersWindowButton.TabIndex = 15;
             this.charactersWindowButton.Text = "Characters window";
             this.charactersWindowButton.UseVisualStyleBackColor = true;
             this.charactersWindowButton.Click += new System.EventHandler(this.CharacterWindowOpen);
@@ -88,10 +89,10 @@
             // characterBox
             // 
             this.characterBox.FormattingEnabled = true;
-            this.characterBox.Location = new System.Drawing.Point(59, 6);
+            this.characterBox.Location = new System.Drawing.Point(69, 6);
             this.characterBox.Name = "characterBox";
-            this.characterBox.Size = new System.Drawing.Size(386, 21);
-            this.characterBox.TabIndex = 7;
+            this.characterBox.Size = new System.Drawing.Size(501, 21);
+            this.characterBox.TabIndex = 1;
             this.characterBox.SelectedIndexChanged += new System.EventHandler(this.CharacterChoice);
             // 
             // label1
@@ -107,20 +108,21 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(1, 1);
+            this.tabControl1.Location = new System.Drawing.Point(1, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(737, 356);
-            this.tabControl1.TabIndex = 9;
+            this.tabControl1.Size = new System.Drawing.Size(594, 355);
+            this.tabControl1.TabIndex = 16;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.Controls.Add(this.descriptionBox);
             this.tabPage1.Controls.Add(this.readCharItemsButton);
             this.tabPage1.Controls.Add(this.saveCharItemsButton);
             this.tabPage1.Controls.Add(this.usingItems);
             this.tabPage1.Controls.Add(this.itemsWindowOpen);
             this.tabPage1.Controls.Add(this.capacityBoxMax);
-            this.tabPage1.Controls.Add(this.descriptionBox);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.classBox);
             this.tabPage1.Controls.Add(this.label8);
@@ -142,45 +144,63 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(729, 330);
+            this.tabPage1.Size = new System.Drawing.Size(586, 329);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(231, 45);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 13);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "List of items";
+            // 
+            // descriptionBox
+            // 
+            this.descriptionBox.Location = new System.Drawing.Point(14, 249);
+            this.descriptionBox.Name = "descriptionBox";
+            this.descriptionBox.ReadOnly = true;
+            this.descriptionBox.Size = new System.Drawing.Size(197, 61);
+            this.descriptionBox.TabIndex = 10;
+            this.descriptionBox.Text = "";
+            // 
             // readCharItemsButton
             // 
-            this.readCharItemsButton.Location = new System.Drawing.Point(470, 249);
+            this.readCharItemsButton.Location = new System.Drawing.Point(408, 258);
             this.readCharItemsButton.Name = "readCharItemsButton";
-            this.readCharItemsButton.Size = new System.Drawing.Size(75, 42);
-            this.readCharItemsButton.TabIndex = 35;
-            this.readCharItemsButton.Text = "Read character";
+            this.readCharItemsButton.Size = new System.Drawing.Size(162, 52);
+            this.readCharItemsButton.TabIndex = 13;
+            this.readCharItemsButton.Text = "Read character with items";
             this.readCharItemsButton.UseVisualStyleBackColor = true;
             this.readCharItemsButton.Click += new System.EventHandler(this.readCharItemsButton_Click);
             // 
             // saveCharItemsButton
             // 
-            this.saveCharItemsButton.Location = new System.Drawing.Point(369, 249);
+            this.saveCharItemsButton.Location = new System.Drawing.Point(234, 258);
             this.saveCharItemsButton.Name = "saveCharItemsButton";
-            this.saveCharItemsButton.Size = new System.Drawing.Size(75, 42);
-            this.saveCharItemsButton.TabIndex = 34;
-            this.saveCharItemsButton.Text = "Save character";
+            this.saveCharItemsButton.Size = new System.Drawing.Size(162, 52);
+            this.saveCharItemsButton.TabIndex = 12;
+            this.saveCharItemsButton.Text = "Save character with items";
             this.saveCharItemsButton.UseVisualStyleBackColor = true;
             this.saveCharItemsButton.Click += new System.EventHandler(this.saveCharItemsButton_Click);
             // 
             // usingItems
             // 
             this.usingItems.FormattingEnabled = true;
-            this.usingItems.Location = new System.Drawing.Point(292, 96);
+            this.usingItems.Location = new System.Drawing.Point(234, 70);
             this.usingItems.Name = "usingItems";
             this.usingItems.Size = new System.Drawing.Size(336, 95);
-            this.usingItems.TabIndex = 33;
+            this.usingItems.TabIndex = 11;
             // 
             // itemsWindowOpen
             // 
-            this.itemsWindowOpen.Location = new System.Drawing.Point(566, 6);
+            this.itemsWindowOpen.Location = new System.Drawing.Point(408, 191);
             this.itemsWindowOpen.Name = "itemsWindowOpen";
-            this.itemsWindowOpen.Size = new System.Drawing.Size(75, 34);
-            this.itemsWindowOpen.TabIndex = 32;
+            this.itemsWindowOpen.Size = new System.Drawing.Size(162, 52);
+            this.itemsWindowOpen.TabIndex = 14;
             this.itemsWindowOpen.Text = "Items window";
             this.itemsWindowOpen.UseVisualStyleBackColor = true;
             this.itemsWindowOpen.Click += new System.EventHandler(this.itemsWindowOpen_Click);
@@ -191,15 +211,7 @@
             this.capacityBoxMax.Name = "capacityBoxMax";
             this.capacityBoxMax.ReadOnly = true;
             this.capacityBoxMax.Size = new System.Drawing.Size(85, 20);
-            this.capacityBoxMax.TabIndex = 31;
-            // 
-            // descriptionBox
-            // 
-            this.descriptionBox.Location = new System.Drawing.Point(69, 227);
-            this.descriptionBox.Name = "descriptionBox";
-            this.descriptionBox.ReadOnly = true;
-            this.descriptionBox.Size = new System.Drawing.Size(142, 20);
-            this.descriptionBox.TabIndex = 24;
+            this.capacityBoxMax.TabIndex = 8;
             // 
             // label9
             // 
@@ -216,7 +228,7 @@
             this.classBox.Name = "classBox";
             this.classBox.ReadOnly = true;
             this.classBox.Size = new System.Drawing.Size(142, 20);
-            this.classBox.TabIndex = 22;
+            this.classBox.TabIndex = 9;
             // 
             // label8
             // 
@@ -233,7 +245,7 @@
             this.capacityBox.Name = "capacityBox";
             this.capacityBox.ReadOnly = true;
             this.capacityBox.Size = new System.Drawing.Size(38, 20);
-            this.capacityBox.TabIndex = 20;
+            this.capacityBox.TabIndex = 7;
             // 
             // label7
             // 
@@ -250,7 +262,7 @@
             this.magicBox.Name = "magicBox";
             this.magicBox.ReadOnly = true;
             this.magicBox.Size = new System.Drawing.Size(142, 20);
-            this.magicBox.TabIndex = 18;
+            this.magicBox.TabIndex = 6;
             // 
             // label6
             // 
@@ -267,7 +279,7 @@
             this.defenceBox.Name = "defenceBox";
             this.defenceBox.ReadOnly = true;
             this.defenceBox.Size = new System.Drawing.Size(142, 20);
-            this.defenceBox.TabIndex = 16;
+            this.defenceBox.TabIndex = 5;
             // 
             // label5
             // 
@@ -284,7 +296,7 @@
             this.strengthBox.Name = "strengthBox";
             this.strengthBox.ReadOnly = true;
             this.strengthBox.Size = new System.Drawing.Size(142, 20);
-            this.strengthBox.TabIndex = 14;
+            this.strengthBox.TabIndex = 4;
             // 
             // label4
             // 
@@ -301,7 +313,7 @@
             this.levelBox.Name = "levelBox";
             this.levelBox.ReadOnly = true;
             this.levelBox.Size = new System.Drawing.Size(142, 20);
-            this.levelBox.TabIndex = 12;
+            this.levelBox.TabIndex = 3;
             // 
             // label3
             // 
@@ -318,7 +330,7 @@
             this.nameBox.Name = "nameBox";
             this.nameBox.ReadOnly = true;
             this.nameBox.Size = new System.Drawing.Size(142, 20);
-            this.nameBox.TabIndex = 10;
+            this.nameBox.TabIndex = 2;
             // 
             // label2
             // 
@@ -337,7 +349,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(729, 330);
+            this.tabPage2.Size = new System.Drawing.Size(586, 329);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -348,7 +360,7 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(329, 44);
+            this.chart1.Location = new System.Drawing.Point(120, 35);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -364,7 +376,7 @@
             // 
             // addItem
             // 
-            this.addItem.Location = new System.Drawing.Point(7, 33);
+            this.addItem.Location = new System.Drawing.Point(343, 6);
             this.addItem.Name = "addItem";
             this.addItem.Size = new System.Drawing.Size(75, 23);
             this.addItem.TabIndex = 1;
@@ -391,7 +403,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(739, 360);
+            this.ClientSize = new System.Drawing.Size(599, 346);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -416,7 +428,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox levelBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox descriptionBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox classBox;
         private System.Windows.Forms.Label label8;
@@ -437,6 +448,8 @@
         public System.Windows.Forms.TextBox magicBox;
         public System.Windows.Forms.TextBox defenceBox;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        public System.Windows.Forms.RichTextBox descriptionBox;
+        private System.Windows.Forms.Label label10;
     }
 }
 

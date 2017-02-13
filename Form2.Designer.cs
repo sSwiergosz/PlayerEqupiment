@@ -59,7 +59,7 @@
             this.readButton.Location = new System.Drawing.Point(235, 271);
             this.readButton.Name = "readButton";
             this.readButton.Size = new System.Drawing.Size(81, 50);
-            this.readButton.TabIndex = 8;
+            this.readButton.TabIndex = 11;
             this.readButton.Text = "Read from file";
             this.readButton.UseVisualStyleBackColor = true;
             this.readButton.Click += new System.EventHandler(this.readButton_Click);
@@ -73,7 +73,7 @@
             this.eCharacterButton.Location = new System.Drawing.Point(235, 102);
             this.eCharacterButton.Name = "eCharacterButton";
             this.eCharacterButton.Size = new System.Drawing.Size(169, 50);
-            this.eCharacterButton.TabIndex = 41;
+            this.eCharacterButton.TabIndex = 9;
             this.eCharacterButton.Text = "Edit character";
             this.eCharacterButton.UseVisualStyleBackColor = true;
             this.eCharacterButton.Click += new System.EventHandler(this.eCharacterButton_Click);
@@ -87,7 +87,7 @@
             this.saveButton.Location = new System.Drawing.Point(323, 271);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(81, 50);
-            this.saveButton.TabIndex = 52;
+            this.saveButton.TabIndex = 12;
             this.saveButton.Text = "Save to file";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -97,7 +97,7 @@
             this.dCharacterButton.Location = new System.Drawing.Point(235, 168);
             this.dCharacterButton.Name = "dCharacterButton";
             this.dCharacterButton.Size = new System.Drawing.Size(169, 50);
-            this.dCharacterButton.TabIndex = 55;
+            this.dCharacterButton.TabIndex = 10;
             this.dCharacterButton.Text = "Delete character";
             this.dCharacterButton.UseVisualStyleBackColor = true;
             this.dCharacterButton.Click += new System.EventHandler(this.dCharacterButton_Click);
@@ -116,7 +116,7 @@
             this.cCharDescriptBox.Location = new System.Drawing.Point(34, 241);
             this.cCharDescriptBox.Name = "cCharDescriptBox";
             this.cCharDescriptBox.Size = new System.Drawing.Size(169, 80);
-            this.cCharDescriptBox.TabIndex = 72;
+            this.cCharDescriptBox.TabIndex = 7;
             this.cCharDescriptBox.Text = "";
             // 
             // label2
@@ -196,7 +196,7 @@
             this.createCharButton.Location = new System.Drawing.Point(235, 40);
             this.createCharButton.Name = "createCharButton";
             this.createCharButton.Size = new System.Drawing.Size(169, 50);
-            this.createCharButton.TabIndex = 63;
+            this.createCharButton.TabIndex = 8;
             this.createCharButton.Text = "Create character";
             this.createCharButton.UseVisualStyleBackColor = true;
             this.createCharButton.Click += new System.EventHandler(this.createCharButton_Click);
@@ -206,42 +206,42 @@
             this.cCharLevelBox.Location = new System.Drawing.Point(103, 66);
             this.cCharLevelBox.Name = "cCharLevelBox";
             this.cCharLevelBox.Size = new System.Drawing.Size(100, 20);
-            this.cCharLevelBox.TabIndex = 62;
+            this.cCharLevelBox.TabIndex = 1;
             // 
             // cCharStrengthBox
             // 
             this.cCharStrengthBox.Location = new System.Drawing.Point(103, 92);
             this.cCharStrengthBox.Name = "cCharStrengthBox";
             this.cCharStrengthBox.Size = new System.Drawing.Size(100, 20);
-            this.cCharStrengthBox.TabIndex = 61;
+            this.cCharStrengthBox.TabIndex = 2;
             // 
             // cCharDefenceBox
             // 
             this.cCharDefenceBox.Location = new System.Drawing.Point(103, 118);
             this.cCharDefenceBox.Name = "cCharDefenceBox";
             this.cCharDefenceBox.Size = new System.Drawing.Size(100, 20);
-            this.cCharDefenceBox.TabIndex = 60;
+            this.cCharDefenceBox.TabIndex = 3;
             // 
             // cCharMagicBox
             // 
             this.cCharMagicBox.Location = new System.Drawing.Point(103, 144);
             this.cCharMagicBox.Name = "cCharMagicBox";
             this.cCharMagicBox.Size = new System.Drawing.Size(100, 20);
-            this.cCharMagicBox.TabIndex = 59;
+            this.cCharMagicBox.TabIndex = 4;
             // 
             // cCharCapacityBox
             // 
             this.cCharCapacityBox.Location = new System.Drawing.Point(103, 170);
             this.cCharCapacityBox.Name = "cCharCapacityBox";
             this.cCharCapacityBox.Size = new System.Drawing.Size(100, 20);
-            this.cCharCapacityBox.TabIndex = 58;
+            this.cCharCapacityBox.TabIndex = 5;
             // 
             // cCharNameBox
             // 
             this.cCharNameBox.Location = new System.Drawing.Point(103, 40);
             this.cCharNameBox.Name = "cCharNameBox";
             this.cCharNameBox.Size = new System.Drawing.Size(100, 20);
-            this.cCharNameBox.TabIndex = 56;
+            this.cCharNameBox.TabIndex = 0;
             // 
             // cCharClassBox
             // 
@@ -249,13 +249,13 @@
             this.cCharClassBox.Location = new System.Drawing.Point(103, 197);
             this.cCharClassBox.Name = "cCharClassBox";
             this.cCharClassBox.Size = new System.Drawing.Size(100, 21);
-            this.cCharClassBox.TabIndex = 74;
+            this.cCharClassBox.TabIndex = 6;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(714, 400);
+            this.ClientSize = new System.Drawing.Size(433, 353);
             this.Controls.Add(this.cCharClassBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cCharDescriptBox);

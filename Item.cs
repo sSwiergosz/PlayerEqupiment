@@ -25,12 +25,14 @@ namespace PlayerEq
 
         public int Weight { get; set; }
 
+        public int ID { get; }
+
         public Item() { }
 
-        public Item(string name, string type, string requirements, int bonus,
+        public Item(int id, string name, string type, string requirements, int bonus,
             string properties, int weight, string description)
         {
-            //this.ID = id;
+            this.ID = id;
             this.Name = name;
             this.Type = type;
             this.Description = description;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace PlayerEq
@@ -22,6 +23,7 @@ namespace PlayerEq
             itemReqBox.Items.Add("Mag");
             itemReqBox.Items.Add("Warrior");
             itemReqBox.Items.Add("Thief");
+            itemReqBox.Items.Add("None");
 
             itemTypeBox.Items.Add("Sword");
             itemTypeBox.Items.Add("Wand");
@@ -40,25 +42,21 @@ namespace PlayerEq
         {
         }
 
-        private void readItemButton_Click(object sender, EventArgs e)
+        public void readIt(string file)
         {
-            var readItem = new string[6]; //do tej tablicy wczytujemy wartosci z pliku
-            var result = openFileDialog1.ShowDialog();
-            if (result == DialogResult.OK)
+            try
             {
-                var file = openFileDialog1.FileName;
-                try
-                {
-                    readItem = File.ReadAllLines(file); //wczytywanie z pliku linia po linii
-                }
-                catch (IOException)
-                {
-                }
+                _frm1.Read = File.ReadAllLines(file).ToList(); //wczytywanie z pliku linia po linii
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Reading failed!");
             }
 
             //tworzenie obiektu klasy Item
-            var newItem = new Item(readItem[0], readItem[1], readItem[2], int.Parse(readItem[3]),
-                readItem[4], int.Parse(readItem[5]), readItem[6]);
+            _frm1.ItemId++;
+            var newItem = new Item(_frm1.ItemId, _frm1.Read[0], _frm1.Read[1], _frm1.Read[2], int.Parse(_frm1.Read[3]),
+                 _frm1.Read[4], int.Parse(_frm1.Read[5]), _frm1.Read[6]);
 
             //dodawanie obiektu do listy wszystkich itemow
             _frm1.ItemsList.Add(newItem);
@@ -66,6 +64,17 @@ namespace PlayerEq
             //wyswietlanie itemow w comboboxie
             _frm1.addingItemBox.Items.Add(newItem.Name);
             selectedItemComboBox.Items.Add(newItem.Name);
+        }
+
+        private void readItemButton_Click(object sender, EventArgs e)
+        {
+            var readItem = new string[6]; //do tej tablicy wczytujemy wartosci z pliku
+            var result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //var file = openFileDialog1.FileName;
+                readIt(openFileDialog1.FileName);
+            }           
         }
 
         //edycja itemu
@@ -95,6 +104,8 @@ namespace PlayerEq
 
             _frm1.addingItemBox.Items.Add(_frm1.ItemsList[i].Name);
             _frm1.addingItemBox.Items.RemoveAt(i);
+
+            MessageBox.Show("Item edited!");
         }
 
         private void saveItemButton_Click(object sender, EventArgs e)
@@ -105,9 +116,19 @@ namespace PlayerEq
         private void saveFileDialog1_FileOk_1(object sender, CancelEventArgs e)
         {
             var i = selectedItemComboBox.SelectedIndex;
-
             var name = saveFileDialog1.FileName; //nazwa pliku do zapisu
-            File.WriteAllText(name, _frm1.ItemsList[i].Name + Environment.NewLine + _frm1.ItemsList[i].Requirements);
+            try
+            {
+                File.WriteAllText(name, _frm1.ItemsList[i].Name + Environment.NewLine + _frm1.ItemsList[i].Type +
+                                Environment.NewLine + _frm1.ItemsList[i].Requirements + Environment.NewLine +
+                                _frm1.ItemsList[i].Bonus + Environment.NewLine + _frm1.ItemsList[i].Properties +
+                                Environment.NewLine + _frm1.ItemsList[i].Weight + Environment.NewLine +
+                                _frm1.ItemsList[i].Description);
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Saving failed!");
+            }
         }
 
         private void dItemButton_Click(object sender, EventArgs e)
@@ -158,16 +179,21 @@ namespace PlayerEq
 
             _frm1.addingItemBox.Items.RemoveAt(i);
             _frm1.addingItemBox.Text = " ";
+
+            MessageBox.Show("Item deleted!");
         }
 
         private void createItemButton_Click(object sender, EventArgs e)
         {
-            var newItem = new Item(eItemNameBox.Text, itemTypeBox.Text, itemReqBox.Text, int.Parse(eItemBonusBox.Text),
+            _frm1.ItemId++;
+            var newItem = new Item(_frm1.ItemId, eItemNameBox.Text, itemTypeBox.Text, itemReqBox.Text, int.Parse(eItemBonusBox.Text),
                 eItemPropBox.Text, int.Parse(eItemWeightBox.Text), eItemDescBox.Text);
 
             _frm1.ItemsList.Add(newItem);
             _frm1.addingItemBox.Items.Add(newItem.Name);
             selectedItemComboBox.Items.Add(newItem.Name);
+
+            MessageBox.Show("Item created!");
         }
     }
 }

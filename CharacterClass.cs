@@ -17,13 +17,13 @@ namespace PlayerEq
 
         public double Defence { get; set; }
 
-        public int Magic { get; set; }
+        public double Magic { get; set; }
 
         public double Capacity { get; set; }
 
         public CharacterClass() { }
 
-        public CharacterClass(string description, double strength, double defence, int magic, double capacity)
+        public CharacterClass(string description, double strength, double defence, double magic, double capacity)
         {
             //this.ID = id;
             this.Description = description;
@@ -38,7 +38,7 @@ namespace PlayerEq
         {
             Strength += (lvl);
             Defence += (lvl);
-            Capacity += (lvl);
+            Magic += (lvl);
         }
     }
 

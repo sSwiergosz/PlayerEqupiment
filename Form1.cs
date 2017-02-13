@@ -23,10 +23,14 @@ namespace PlayerEq
         public double TempBonusDefence;
         public double TempBonusMagic;
 
+        //zmienne pomocnicze do blokowania mozliwosci zaklozenia kolejnego itemu
         public bool HasHelmet = false;
         public bool HasArmor = false;
         public bool HasWand = false;
         public bool HasSword = false;
+
+        public int CharId = 0;
+        public int ItemId = 0;
 
         //pomocnicze listy pomagajace w zapisie gotowej postaci
         public List<string> TempString = new List<string>();
@@ -35,6 +39,25 @@ namespace PlayerEq
         public Form1()
         {
             InitializeComponent();
+            readCh("char1.txt");
+            readCh("char2.txt");
+            readCh("char3.txt");
+            readCh("char4.txt");
+            readCh("char5.txt");
+
+            if (_form3 == null)
+                _form3 = new Form3(this);
+
+            _form3.readIt("item1.txt");
+            _form3.readIt("item2.txt");
+            _form3.readIt("item3.txt");
+            _form3.readIt("item4.txt");
+            _form3.readIt("item5.txt");
+            _form3.readIt("item6.txt");
+            _form3.readIt("item7.txt");
+            _form3.readIt("item8.txt");
+            _form3.readIt("item9.txt");
+            _form3.readIt("item10.txt");
         }
 
         public Form1(Form2 form2)
@@ -140,15 +163,17 @@ namespace PlayerEq
             }
             else if (ItemsList[i].Type == "Armor" || ItemsList[i].Type == "Helmet")
             {
-                if (HasHelmet == false)
+                chart1.Series["Before"].Points.AddXY("Defence", Convert.ToDouble(defenceBox.Text));
+                chart1.Series["After"].Points.AddXY("Strength",Convert.ToDouble(defenceBox.Text) + 
+                                                    ItemsList[i].Bonus);
+                if (HasHelmet == true)
                 {
-                    chart1.Series["Before"].Points.AddXY("Defence", Convert.ToDouble(defenceBox.Text));
-                    chart1.Series["After"].Points.AddXY("Strength",
-                    Convert.ToDouble(defenceBox.Text) + ItemsList[i].Bonus);
+                    return;
                 }
             }
 
-            MessageBox.Show(Resources.Form1_SelectItem_Name__ + ItemsList[i].Name + Environment.NewLine +
+            MessageBox.Show("ID: " + ItemsList[i].ID + Environment.NewLine +
+                            "Name: " + ItemsList[i].Name + Environment.NewLine +
                             "Type: " + ItemsList[i].Type + Environment.NewLine +
                             "Requirement: " + ItemsList[i].Requirements + Environment.NewLine +
                             "Bonus: " + ItemsList[i].Bonus + Environment.NewLine +
@@ -230,6 +255,7 @@ namespace PlayerEq
                             }
                         }
                     }
+                    MessageBox.Show("Item added to your character!");
 
                     capacityBox.Text = temp.ToString();
                     usingItems.Items.Add(ItemsList[i].Name);
@@ -286,8 +312,32 @@ namespace PlayerEq
             File.WriteAllLines(name, allStringList);
         }
 
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e) {}
+
+        private void readCh(string file)
         {
+                try
+                {
+                    Read = File.ReadAllLines(file).ToList(); //wczytywanie z pliku linia po linii
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show("Reading failed");
+                }
+           
+            CharId++;
+            var newCharacter = new Character(CharId, Read[0], int.Parse(Read[1]),
+                Convert.ToDouble(Read[2]), Convert.ToDouble(Read[3]), int.Parse(Read[4]),
+                Convert.ToDouble(Read[5]), Read[6], Read[7]);
+
+            var lvl = int.Parse(Read[1]) * 20; //zwiekszanie wartosci bazowych
+            newCharacter.GiveBonus(lvl);
+
+            CharactersList.Add(newCharacter);
+            characterBox.Items.Add(newCharacter.Name + ", level: " + newCharacter.Level + ", class: " +
+                                    newCharacter.ClassOption);
+            characterBox.SelectedIndex = characterBox.Items.Count - 1;
+            Read.Clear();
         }
 
         private void readCharItemsButton_Click(object sender, EventArgs e)
@@ -298,23 +348,8 @@ namespace PlayerEq
             var result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
-                var file = openFileDialog1.FileName;
-                try
-                {
-                    Read = File.ReadAllLines(file).ToList(); //wczytywanie z pliku linia po linii
-                }
-                catch (IOException)
-                {
-                }
+                readCh(openFileDialog1.FileName);
             }
-
-            var newCharacter = new Character(Read[0], int.Parse(Read[1]),
-                Convert.ToDouble(Read[2]), Convert.ToDouble(Read[3]), int.Parse(Read[4]),
-                Convert.ToDouble(Read[5]), Read[6], Read[7]);
-
-            CharactersList.Add(newCharacter);
-            characterBox.Items.Add(newCharacter.Name + ", level: " + newCharacter.Level + ", klasa: " + Read[7]);
-            characterBox.SelectedIndex = characterBox.Items.Count - 1;
 
             //ostatni element listy postaci
             var i = CharactersList.Count - 1;
@@ -331,7 +366,6 @@ namespace PlayerEq
 
             var temp = new string[7];
             var counter = 0;
-
             var lastElement = Read.Last();
 
             //pierwsze 8 wersow zawsze bedzie nalezec do postaci
@@ -345,7 +379,8 @@ namespace PlayerEq
                 }
                 else
                 {
-                    var newItem = new Item(temp[0], temp[1], temp[2], int.Parse(temp[3]), temp[4], int.Parse(temp[5]),
+                    ItemId++;
+                    var newItem = new Item(ItemId, temp[0], temp[1], temp[2], int.Parse(temp[3]), temp[4], int.Parse(temp[5]),
                         temp[6]);
                     ItemsList.Add(newItem);
                     var j = ItemsList.Count - 1;
@@ -360,7 +395,8 @@ namespace PlayerEq
 
                 if (s == lastElement)
                 {
-                    var newItem = new Item(temp[0], temp[1], temp[2], int.Parse(temp[3]), temp[4], int.Parse(temp[5]),
+                    ItemId++;
+                    var newItem = new Item(ItemId, temp[0], temp[1], temp[2], int.Parse(temp[3]), temp[4], int.Parse(temp[5]),
                         temp[6]);
                     ItemsList.Add(newItem);
                     var j = ItemsList.Count - 1;

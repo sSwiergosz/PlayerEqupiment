@@ -51,6 +51,7 @@
             this.createItemButton = new System.Windows.Forms.Button();
             this.itemReqBox = new System.Windows.Forms.ComboBox();
             this.itemTypeBox = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // eItemNameBox
@@ -58,21 +59,21 @@
             this.eItemNameBox.Location = new System.Drawing.Point(100, 49);
             this.eItemNameBox.Name = "eItemNameBox";
             this.eItemNameBox.Size = new System.Drawing.Size(100, 20);
-            this.eItemNameBox.TabIndex = 0;
+            this.eItemNameBox.TabIndex = 69;
             // 
             // eItemBonusBox
             // 
             this.eItemBonusBox.Location = new System.Drawing.Point(100, 127);
             this.eItemBonusBox.Name = "eItemBonusBox";
             this.eItemBonusBox.Size = new System.Drawing.Size(100, 20);
-            this.eItemBonusBox.TabIndex = 3;
+            this.eItemBonusBox.TabIndex = 72;
             // 
             // eItemPropBox
             // 
             this.eItemPropBox.Location = new System.Drawing.Point(100, 153);
             this.eItemPropBox.Name = "eItemPropBox";
             this.eItemPropBox.Size = new System.Drawing.Size(100, 20);
-            this.eItemPropBox.TabIndex = 4;
+            this.eItemPropBox.TabIndex = 73;
             // 
             // eItemWeightBox
             // 
@@ -146,11 +147,11 @@
             // 
             // readItemButton
             // 
-            this.readItemButton.Location = new System.Drawing.Point(526, 25);
+            this.readItemButton.Location = new System.Drawing.Point(257, 97);
             this.readItemButton.Name = "readItemButton";
-            this.readItemButton.Size = new System.Drawing.Size(75, 23);
+            this.readItemButton.Size = new System.Drawing.Size(75, 44);
             this.readItemButton.TabIndex = 14;
-            this.readItemButton.Text = "Read";
+            this.readItemButton.Text = "Read from file";
             this.readItemButton.UseVisualStyleBackColor = true;
             this.readItemButton.Click += new System.EventHandler(this.readItemButton_Click);
             // 
@@ -174,7 +175,7 @@
             // 
             // eItemDescBox
             // 
-            this.eItemDescBox.Location = new System.Drawing.Point(25, 224);
+            this.eItemDescBox.Location = new System.Drawing.Point(25, 229);
             this.eItemDescBox.Name = "eItemDescBox";
             this.eItemDescBox.Size = new System.Drawing.Size(175, 80);
             this.eItemDescBox.TabIndex = 53;
@@ -182,9 +183,9 @@
             // 
             // editItemButton
             // 
-            this.editItemButton.Location = new System.Drawing.Point(25, 333);
+            this.editItemButton.Location = new System.Drawing.Point(257, 216);
             this.editItemButton.Name = "editItemButton";
-            this.editItemButton.Size = new System.Drawing.Size(75, 23);
+            this.editItemButton.Size = new System.Drawing.Size(75, 44);
             this.editItemButton.TabIndex = 54;
             this.editItemButton.Text = "Edit item";
             this.editItemButton.UseVisualStyleBackColor = true;
@@ -193,16 +194,16 @@
             // selectedItemComboBox
             // 
             this.selectedItemComboBox.FormattingEnabled = true;
-            this.selectedItemComboBox.Location = new System.Drawing.Point(341, 104);
+            this.selectedItemComboBox.Location = new System.Drawing.Point(25, 338);
             this.selectedItemComboBox.Name = "selectedItemComboBox";
-            this.selectedItemComboBox.Size = new System.Drawing.Size(260, 21);
+            this.selectedItemComboBox.Size = new System.Drawing.Size(307, 21);
             this.selectedItemComboBox.TabIndex = 55;
             // 
             // saveItemButton
             // 
-            this.saveItemButton.Location = new System.Drawing.Point(430, 25);
+            this.saveItemButton.Location = new System.Drawing.Point(257, 47);
             this.saveItemButton.Name = "saveItemButton";
-            this.saveItemButton.Size = new System.Drawing.Size(75, 23);
+            this.saveItemButton.Size = new System.Drawing.Size(75, 44);
             this.saveItemButton.TabIndex = 56;
             this.saveItemButton.Text = "Save to file";
             this.saveItemButton.UseVisualStyleBackColor = true;
@@ -210,9 +211,9 @@
             // 
             // dItemButton
             // 
-            this.dItemButton.Location = new System.Drawing.Point(106, 333);
+            this.dItemButton.Location = new System.Drawing.Point(257, 265);
             this.dItemButton.Name = "dItemButton";
-            this.dItemButton.Size = new System.Drawing.Size(75, 23);
+            this.dItemButton.Size = new System.Drawing.Size(75, 44);
             this.dItemButton.TabIndex = 57;
             this.dItemButton.Text = "Delete item";
             this.dItemButton.UseVisualStyleBackColor = true;
@@ -220,9 +221,9 @@
             // 
             // createItemButton
             // 
-            this.createItemButton.Location = new System.Drawing.Point(188, 333);
+            this.createItemButton.Location = new System.Drawing.Point(257, 166);
             this.createItemButton.Name = "createItemButton";
-            this.createItemButton.Size = new System.Drawing.Size(75, 23);
+            this.createItemButton.Size = new System.Drawing.Size(75, 44);
             this.createItemButton.TabIndex = 58;
             this.createItemButton.Text = "Create item";
             this.createItemButton.UseVisualStyleBackColor = true;
@@ -234,7 +235,7 @@
             this.itemReqBox.Location = new System.Drawing.Point(100, 101);
             this.itemReqBox.Name = "itemReqBox";
             this.itemReqBox.Size = new System.Drawing.Size(100, 21);
-            this.itemReqBox.TabIndex = 75;
+            this.itemReqBox.TabIndex = 71;
             // 
             // itemTypeBox
             // 
@@ -242,13 +243,23 @@
             this.itemTypeBox.Location = new System.Drawing.Point(100, 75);
             this.itemTypeBox.Name = "itemTypeBox";
             this.itemTypeBox.Size = new System.Drawing.Size(100, 21);
-            this.itemTypeBox.TabIndex = 76;
+            this.itemTypeBox.TabIndex = 70;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(23, 322);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(71, 13);
+            this.label8.TabIndex = 74;
+            this.label8.Text = "Selected item";
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(674, 371);
+            this.ClientSize = new System.Drawing.Size(383, 371);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.itemTypeBox);
             this.Controls.Add(this.itemReqBox);
             this.Controls.Add(this.createItemButton);
@@ -303,5 +314,6 @@
         private System.Windows.Forms.Button createItemButton;
         public System.Windows.Forms.ComboBox itemReqBox;
         public System.Windows.Forms.ComboBox itemTypeBox;
+        private System.Windows.Forms.Label label8;
     }
 }
